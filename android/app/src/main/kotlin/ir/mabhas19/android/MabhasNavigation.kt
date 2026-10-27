@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -15,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
@@ -22,17 +24,24 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import ir.mabhas19.core.model.ProjectId
 import ir.mabhas19.core.model.ThemePreference
+import ir.mabhas19.feature.home.HomeScreen
+import ir.mabhas19.feature.home.HomeSection
+import ir.mabhas19.feature.home.SectionPlaceholderScreen
 import ir.mabhas19.feature.projects.NewProjectScreen
 import ir.mabhas19.feature.projects.ProjectDetailScreen
 import ir.mabhas19.feature.projects.ProjectsScreen
 import ir.mabhas19.feature.projects.ProjectsViewModel
 import kotlinx.serialization.Serializable
 
+@Serializable data object Home : NavKey
+
 @Serializable data object ProjectList : NavKey
 
 @Serializable data object NewProject : NavKey
 
 @Serializable data class ProjectDetail(val id: String) : NavKey
+
+@Serializable data class Section(val key: String) : NavKey
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,7 +51,7 @@ fun MabhasNavigation(
     themeError: Boolean,
     onThemeChange: () -> Unit
 ) {
-    val backStack = rememberNavBackStack(ProjectList)
+    val backStack = rememberNavBackStack(Home)
     val projects by viewModel.projects.collectAsStateWithLifecycle()
     val editor by viewModel.editor.collectAsStateWithLifecycle()
     val title by viewModel.title.collectAsStateWithLifecycle()
@@ -62,7 +71,25 @@ fun MabhasNavigation(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.app_name)) },
+                title = {
+                    if (backStack.lastOrNull() == Home) {
+                        Column {
+                            Text(
+                                stringResource(R.string.app_name),
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                            Text(
+                                stringResource(R.string.app_subtitle),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.primary,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                    } else {
+                        Text(stringResource(R.string.app_name))
+                    }
+                },
                 navigationIcon = {
                     if (backStack.size > 1) {
                         TextButton(onClick = {
@@ -84,6 +111,16 @@ fun MabhasNavigation(
                 backStack = backStack,
                 onBack = { if (backStack.size > 1) backStack.removeLastOrNull() },
                 entryProvider = entryProvider {
+                    entry<Home> {
+                        HomeScreen(
+                            projects = projects,
+                            loadFailed = loadFailed,
+                            onCreateProject = { backStack.add(NewProject) },
+                            onOpenProjects = { backStack.add(ProjectList) },
+                            onOpenProject = { backStack.add(ProjectDetail(it.value)) },
+                            onOpenSection = { backStack.add(Section(it.key)) }
+                        )
+                    }
                     entry<ProjectList> {
                         ProjectsScreen(projects, loadFailed, {
                             backStack.add(NewProject)
@@ -102,6 +139,9 @@ fun MabhasNavigation(
                             remember(key.id) { viewModel.observeProject(ProjectId(key.id)) }
                         val project by projectFlow.collectAsStateWithLifecycle(initialValue = null)
                         ProjectDetailScreen(project)
+                    }
+                    entry<Section> { key ->
+                        SectionPlaceholderScreen(HomeSection.fromKey(key.key))
                     }
                 }
             )

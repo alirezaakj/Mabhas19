@@ -20,7 +20,7 @@ Deliverable: reviewed release scope and contract matrix. Gate: unknown contracts
 
 Dependencies: public discovery; no account required.
 
-Phase 1 status (2026-10-27): items 1–5 are implemented and verified, including a green CI run that executed the emulator suite. See [phase-1-status.md](phase-1-status.md).
+Phase 1 status (2026-10-27): items 1–5 are implemented and verified, including a green CI run that executed the emulator suite. On the same date a native workspace home mirroring the website main page (F01 surface, `feature/home`) replaced the project list as the start destination; live data is limited to local projects and theme, and unfinished website sections open an explicit placeholder. See [phase-1-status.md](phase-1-status.md).
 
 1. [x] Select compatible stable tool versions and commit Gradle wrapper, checksums/verification policy, version catalogue and convention plugins under `android/`.
 2. [x] Create app + model/domain/data/network/database/designsystem/testing modules needed for the first slice. Add remaining feature modules incrementally.

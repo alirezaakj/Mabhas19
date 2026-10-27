@@ -1,10 +1,12 @@
 package ir.mabhas19.android
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextInput
 import androidx.lifecycle.SavedStateHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -20,15 +22,21 @@ import org.junit.runner.RunWith
 class ProjectNavigationTest {
     @get:Rule val compose = createComposeRule()
 
-    @Test fun createProjectNavigatesToDetailAndBackToPersistedList() {
-        val repository = FakeProjectRepository()
+    private fun setContent(repository: FakeProjectRepository): ProjectsViewModel {
         val viewModel = ProjectsViewModel(repository, SavedStateHandle())
         compose.setContent {
             MabhasTheme {
                 MabhasNavigation(viewModel, ThemePreference.SYSTEM, false, {})
             }
         }
-        compose.onNodeWithTag("new_project").performClick()
+        return viewModel
+    }
+
+    @Test fun homeStartsTheAppAndCreatingProjectOpensDetail() {
+        val repository = FakeProjectRepository()
+        setContent(repository)
+        compose.onNodeWithTag("home_screen").assertIsDisplayed()
+        compose.onNodeWithTag("home_new_project").performClick()
         compose.onNodeWithTag("project_title").performTextInput("پرونده آزمایشی")
         compose.onNodeWithTag("save_project").performClick()
         // Physical devices can take longer than the default CI emulator to settle after IME input.
@@ -36,6 +44,21 @@ class ProjectNavigationTest {
         compose.onNodeWithTag("project_detail").assertIsDisplayed()
         compose.onNodeWithText("پرونده آزمایشی").assertIsDisplayed()
         compose.onNodeWithTag("navigate_back").performClick()
+        compose.onNodeWithTag("home_screen").assertIsDisplayed()
+        compose.onNodeWithTag("home_screen").performScrollToNode(hasTestTag("home_open_projects"))
+        compose.onNodeWithTag("home_open_projects").performClick()
+        compose.onNodeWithTag("projects_screen").assertIsDisplayed()
         compose.onNodeWithTag("project_test-1").assertIsDisplayed()
+    }
+
+    @Test fun homeSectionOpensExplicitPlaceholder() {
+        setContent(FakeProjectRepository())
+        compose.onNodeWithTag("home_screen")
+            .performScrollToNode(hasTestTag("home_section_architecture"))
+        compose.onNodeWithTag("home_section_architecture").performClick()
+        compose.onNodeWithTag("section_placeholder_architecture").assertIsDisplayed()
+        compose.onNodeWithTag("navigate_back").performClick()
+        compose.waitForIdle()
+        compose.onNodeWithTag("home_screen").assertIsDisplayed()
     }
 }

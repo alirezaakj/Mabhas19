@@ -86,7 +86,7 @@ Mabhas19/
     └── benchmark/                          # introduced at performance phase
 ```
 
-The Phase 1 modules (`app`, `core/*`, `feature/projects`) exist and build; later feature modules are added as phases require them, with working builds and tests. The tree is a target, not a statement that every file exists. Keep `.github/workflows/` at repository root even though Gradle lives in `android/`.
+The Phase 1 modules (`app`, `core/*`, `feature/projects`, `feature/home`) exist and build; later feature modules are added as phases require them, with working builds and tests. The tree is a target, not a statement that every file exists. Keep `.github/workflows/` at repository root even though Gradle lives in `android/`.
 
 Within a feature: `src/main/kotlin/.../<feature>/{navigation,ui,presentation}`, `src/test/kotlin/...`, and `src/androidTest/kotlin/...` for meaningful device UI tests. ViewModels expose immutable UiState and accept user actions. Side effects update durable state and then UI state; avoid unconsumed one-shot event channels for critical save results.
 

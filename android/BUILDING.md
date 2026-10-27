@@ -52,7 +52,7 @@ This adds the HTTPS Aliyun Google Maven mirror before Google; it changes the dep
 
 ## Operation and limitations
 
-Open `android/` in Android Studio, choose Gradle JDK 21, sync, and run `app`. The launcher starts at local projects; create a named fourth-edition guest project, open its detail, return to the list, and change theme through the app bar. The project title survives app restart via Room. Unsaved title text survives supported saved-state recreation; it is not a durable project until Save succeeds.
+Open `android/` in Android Studio, choose Gradle JDK 21, sync, and run `app`. The launcher opens the workspace home (website main page layout): discipline and quick-access cards, project overview, recent and active local projects. «پرونده جدید» creates a named fourth-edition guest project, the recent/active cards reopen it, «پرونده‌های من» lists local projects, and the app bar cycles the theme. Unimplemented website sections open a screen that states they are not in the app yet. The project title survives app restart via Room. Unsaved title text survives supported saved-state recreation; it is not a durable project until Save succeeds.
 
 No member session or remote mutation is implemented. App backup is disabled for the initial guest database (`allowBackup="false"` plus empty backup/data-extraction rules); import/export and account retention policy are later work. Session logging is absent. Numeric parsing/unit helpers do not issue compliance or certification decisions.
 

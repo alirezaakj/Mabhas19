@@ -46,10 +46,34 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 | `:app:assembleDebug` | `app-debug.apk` produced, 13,979,691 bytes |
 | Debug instrumentation APK assembly | 5 modules (`app`, `core:data`, `core:database`, `core:designsystem`, `feature:projects`) build `assembleDebugAndroidTest`; 487-task `qualityCheck` green |
 | Room schema export | `core/database/schemas/ir.mabhas19.core.database.MabhasDatabase/1.json` (3 entity tables), committed for migration tests |
-| Physical device, SM-A546E (Galaxy A54 5G), Android 14 / API 34, arm64-v8a, 1080x2340, attached over wireless debugging | All 3 instrumentation suites pass (`connectedDebugAndroidTest`: app navigation, Room reopen round-trip, draft-conflict). The installed debug build renders the project list in Persian RTL under the dark theme, with no crash from the app package |
+| Physical device, SM-A546E (Galaxy A54 5G), Android 14 / API 34, arm64-v8a, 1080x2340, attached over wireless debugging | All 3 instrumentation suites pass (`connectedDebugAndroidTest`: app navigation, Room reopen round-trip, draft-conflict). The installed debug build renders the workspace home and project list in Persian RTL under the dark theme, with no crash from the app package |
 | CI run [40510309053](https://github.com/alirezaakj/Mabhas19/actions/runs/40510309053) (`75a457b`) | Both jobs **success**: `quality` ran `qualityCheck` on `ubuntu-24.04`; `device-smoke` booted an API 36 `google_apis` x86_64 emulator and ran `connectedDebugAndroidTest` (the androidTest report artifact was produced, so the suite executed rather than being skipped) |
 
 No test contacts the production website. The A01 adapter was exercised only against MockWebServer.
+
+## Workspace home added (F01 surface)
+
+On 2026-10-27 the app's start destination became a native workspace mirroring the observed website main page instead of the bare project list. Source: `feature/home` (new module), wired in `app/MabhasNavigation.kt`.
+
+- Live state: theme switch, guest/local notices, project count, the three most recently updated local projects, active-project card, and every navigation path into existing screening (project list, create project, project detail).
+- Mirrored static content: edition eyebrow and «ویرایش ۴» badge, five discipline cards with the site's titles/descriptions/action labels, five quick-access rows, the three overview cells, and the footer — all as Persian string resources in `feature/home`.
+- Deliberate gaps: the website building photo, motion aurora and Vazirmatn font are **not** bundled (rights/hosting unresolved); climate/province/occupancy chips are omitted because the app has no reference-data session yet, so no invented البرز/کرج values are shown; discipline, dossier, team, dashboard and login cards open an explicit “این بخش هنوز در برنامه نیست” screen (`SectionPlaceholderScreen`) rather than a fake form or a simulated calculation.
+- Theme tokens were retuned to the observed home palette (`#040507`/`#00DF81`/`#F2AA22` dark, `#F5F7FA`/`#009B60`/`#B96C00` light) in `core/designsystem`.
+
+Verification for this change:
+
+```sh
+./gradlew --offline -PuseGoogleMirror=true qualityCheck
+./gradlew --offline -PuseGoogleMirror=true :app:connectedDebugAndroidTest
+```
+
+| Check | Result |
+|---|---|
+| `qualityCheck` | `BUILD SUCCESSFUL` — 571 tasks; ktlint, Detekt, Android Lint, JVM/unit tests and both debug APK assemblies pass |
+| `feature:home` unit tests | 4 passed — section keys/order/unknown key, Persian digit formatting |
+| `:app:connectedDebugAndroidTest` on SM-A546E | 2/2 pass — home is the start screen; create→detail→back→project list; section card→placeholder→back |
+| Visual inspection (SM-A546E, 1080x2340, API 34) | Dark and light home screens checked by scrolling; RTL order, accent cards, Persian strings and the bottom cards render. Captures kept locally only (`research/local/device-home-{dark,light,bottom}.png`, git-ignored) |
+| Not checked | 200% font scale, TalkBack semantics, landscape/tablet, and the 3-across overview row on small-width phones |
 
 ## Environment problems found and how the build was made green
 
@@ -68,10 +92,10 @@ No test contacts the production website. The A01 adapter was exercised only agai
 | Item | Why | Follow-up |
 |---|---|---|
 | Release build, R8 shrinking and signing | Out of Phase 1 scope; no signing configuration exists | Phase 9 |
-| Visual RTL, light theme, font scale, TalkBack | Dark-theme RTL rendering of the project list was inspected on the SM-A546E; light theme, 200% font scale, landscape/tablet layouts and TalkBack semantics have not been checked, and the Compose test asserts navigation/text rather than layout direction or contrast | Recheck the remaining combinations on device |
+| Visual RTL, light theme, font scale, TalkBack | Dark- and light-theme RTL of the workspace home and project list were inspected on the SM-A546E; 200% font scale, landscape/tablet layouts and TalkBack semantics have not been checked, and the Compose tests assert navigation/text rather than layout direction or contrast | Recheck the remaining combinations on device |
 | Room migration upgrade path | Only schema version 1 exists, so there is nothing to migrate yet | Add migration tests with the first schema change |
 | `main` history | Phase 1 landed as `c568281`, `c4d43b5`, `469506d` and `75a457b` on 2026-10-27 | Review the commits |
 
 ## Consequence for the plan
 
-Phase 1 build items 1–4 are evidenced above and item 5 is now demonstrated by a green CI run that executed both the quality job and the emulator suite. The remaining Phase 1 acceptance gap is human inspection of the light theme, font scaling, adaptive layouts and TalkBack on a device (dark-theme RTL is now confirmed on the SM-A546E). Phase 1 is therefore **not** fully accepted, and Phase 2 should not be described as started.
+Phase 1 build items 1–4 are evidenced above and item 5 is now demonstrated by a green CI run that executed both the quality job and the emulator suite. The remaining Phase 1 acceptance gap is human inspection of font scaling, adaptive layouts and TalkBack on a device (dark- and light-theme RTL are now confirmed on the SM-A546E). Phase 1 is therefore **not** fully accepted, and Phase 2 should not be described as started.
