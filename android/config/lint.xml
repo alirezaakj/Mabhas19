@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lint>
+    <!--
+      AndroidX/AGP/Kotlin versions are pinned as one reviewed compatible set in
+      gradle/libs.versions.toml (see BUILDING.md). Version-availability notices must not fail
+      the build; dependency updates are a deliberate, separately tested change.
+    -->
+    <issue id="AndroidGradlePluginVersion" severity="ignore" />
+    <issue id="GradleDependency" severity="ignore" />
+    <issue id="NewerVersionAvailable" severity="ignore" />
+</lint>

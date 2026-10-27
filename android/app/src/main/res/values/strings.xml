@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">مبحث نوزدهم</string>
+  <string name="back">بازگشت</string>
+  <string name="theme_system">پوسته: خودکار</string>
+  <string name="theme_light">پوسته: روشن</string>
+  <string name="theme_dark">پوسته: تیره</string>
+  <string name="theme_error">تغییر پوسته ذخیره نشد.</string>
+</resources>
