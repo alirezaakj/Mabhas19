@@ -46,6 +46,7 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 | `:app:assembleDebug` | `app-debug.apk` produced, 13,979,691 bytes |
 | Debug instrumentation APK assembly | 5 modules (`app`, `core:data`, `core:database`, `core:designsystem`, `feature:projects`) build `assembleDebugAndroidTest`; 487-task `qualityCheck` green |
 | Room schema export | `core/database/schemas/ir.mabhas19.core.database.MabhasDatabase/1.json` (3 entity tables), committed for migration tests |
+| Physical device, SM-A546E (Galaxy A54 5G), Android 14 / API 34, arm64-v8a, 1080x2340, attached over wireless debugging | All 3 instrumentation suites pass (`connectedDebugAndroidTest`: app navigation, Room reopen round-trip, draft-conflict). The installed debug build renders the project list in Persian RTL under the dark theme, with no crash from the app package |
 | CI run [40510309053](https://github.com/alirezaakj/Mabhas19/actions/runs/40510309053) (`75a457b`) | Both jobs **success**: `quality` ran `qualityCheck` on `ubuntu-24.04`; `device-smoke` booted an API 36 `google_apis` x86_64 emulator and ran `connectedDebugAndroidTest` (the androidTest report artifact was produced, so the suite executed rather than being skipped) |
 
 No test contacts the production website. The A01 adapter was exercised only against MockWebServer.
@@ -59,17 +60,18 @@ No test contacts the production website. The A01 adapter was exercised only agai
 5. **Formatting drift.** `./gradlew ktlintFormat` applied the `android_studio` style (statement wrapping, no trailing commas). Code was formatted, not rewritten.
 6. **Lint failed on version-availability notices** because `warningsAsErrors = true`. Deliberately pinned versions are exempted in `android/config/lint.xml`; dependency upgrades stay a separate, tested change. Genuine findings were fixed instead: backup extraction rules added for API 31+ (`data_extraction_rules.xml`) with the pre-12 equivalent (`backup_rules.xml`), and an unused string removed.
 7. **The instrumentation tests never compiled.** `RoomDatabase` is not a `java.io.Closeable`, so `.use { }` in the `core:data` and `core:database` tests failed. This blocked the first real device run before any test executed and was invisible to `qualityCheck`, which only built production sources. The tests now close the database in `finally`, and `qualityCheck` depends on every module's `assembleDebugAndroidTest`.
-8. **CI itself failed twice before it could verify anything.** Run [40507549888](https://github.com/alirezaakj/Mabhas19/actions/runs/40507549888) died inside `setup-android@v3` and the emulator step on `ubuntu-latest`; run [40508748666](https://github.com/alirezaakj/Mabhas19/actions/runs/40508748666) passed `quality` but the device job still failed on the androidTest compile error above. The workflow now pins `ubuntu-24.04` and current action majors, and run 40510309053 is green.
+8. **The Compose test timed out on real hardware.** The 5 s `waitUntil` was enough on the CI emulator but not after IME input on the SM-A546E, so the test flaked once before passing; the timeout is now 15 s.
+9. **CI itself failed twice before it could verify anything.** Run [40507549888](https://github.com/alirezaakj/Mabhas19/actions/runs/40507549888) died inside `setup-android@v3` and the emulator step on `ubuntu-latest`; run [40508748666](https://github.com/alirezaakj/Mabhas19/actions/runs/40508748666) passed `quality` but the device job still failed on the androidTest compile error above. The workflow now pins `ubuntu-24.04` and current action majors, and run 40510309053 is green.
 
 ## Not verified
 
 | Item | Why | Follow-up |
 |---|---|---|
 | Release build, R8 shrinking and signing | Out of Phase 1 scope; no signing configuration exists | Phase 9 |
-| Visual RTL, dark theme, font scale, TalkBack | Compose renders were not inspected by a human on a device/emulator; the Compose test asserts navigation and text, not layout direction, contrast or semantics | Phase 1 acceptance recheck on a device |
+| Visual RTL, light theme, font scale, TalkBack | Dark-theme RTL rendering of the project list was inspected on the SM-A546E; light theme, 200% font scale, landscape/tablet layouts and TalkBack semantics have not been checked, and the Compose test asserts navigation/text rather than layout direction or contrast | Recheck the remaining combinations on device |
 | Room migration upgrade path | Only schema version 1 exists, so there is nothing to migrate yet | Add migration tests with the first schema change |
 | `main` history | Phase 1 landed as `c568281`, `c4d43b5`, `469506d` and `75a457b` on 2026-10-27 | Review the commits |
 
 ## Consequence for the plan
 
-Phase 1 build items 1–4 are evidenced above and item 5 is now demonstrated by a green CI run that executed both the quality job and the emulator suite. The remaining Phase 1 acceptance gap is human inspection of Persian RTL rendering, both themes, font scaling and TalkBack on a device. Phase 1 is therefore **not** fully accepted, and Phase 2 should not be described as started.
+Phase 1 build items 1–4 are evidenced above and item 5 is now demonstrated by a green CI run that executed both the quality job and the emulator suite. The remaining Phase 1 acceptance gap is human inspection of the light theme, font scaling, adaptive layouts and TalkBack on a device (dark-theme RTL is now confirmed on the SM-A546E). Phase 1 is therefore **not** fully accepted, and Phase 2 should not be described as started.

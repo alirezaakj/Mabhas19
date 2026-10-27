@@ -31,7 +31,8 @@ class ProjectNavigationTest {
         compose.onNodeWithTag("new_project").performClick()
         compose.onNodeWithTag("project_title").performTextInput("پرونده آزمایشی")
         compose.onNodeWithTag("save_project").performClick()
-        compose.waitUntil(5_000) { repository.projects.value.size == 1 }
+        // Physical devices can take longer than the default CI emulator to settle after IME input.
+        compose.waitUntil(15_000) { repository.projects.value.size == 1 }
         compose.onNodeWithTag("project_detail").assertIsDisplayed()
         compose.onNodeWithText("پرونده آزمایشی").assertIsDisplayed()
         compose.onNodeWithTag("navigate_back").performClick()
