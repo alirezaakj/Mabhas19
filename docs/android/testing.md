@@ -1,6 +1,6 @@
 # Testing and delivery strategy
 
-Status: test design, not an existing/passing Android suite. Introduce tests with each implementation phase. Favor fast deterministic JVM tests, real local integrations, and a smaller set of end-to-end device journeys. Production services must never be dependencies of normal CI.
+Status: Phase 1 suite exists and passes on the JVM; instrumentation/Compose tests are written but not yet executed, and CI has not run ([evidence](phase-1-status.md)). Introduce tests with each implementation phase. Favor fast deterministic JVM tests, real local integrations, and a smaller set of end-to-end device journeys. Production services must never be dependencies of normal CI.
 
 ## Test layers
 

@@ -1,6 +1,6 @@
 # Android architecture and project structure
 
-Status: proposed implementation, informed by observed website contracts. No Gradle project exists yet. Package `ir.mabhas19.android` and minSdk 26 are provisional owner decisions; verify name ownership/device audience before release. Select and pin a mutually compatible stable JDK/Gradle/AGP/Kotlin/Compose/SDK set at Phase 1 rather than guessing future versions here.
+Status: Phase 1 implementation, informed by observed website contracts. A Gradle project exists under `android/`; its JVM checks and debug assembly pass locally ([evidence](phase-1-status.md)), while device tests and CI remain unverified. Package `ir.mabhas19.android` and minSdk 26 are provisional owner decisions; verify name ownership/device audience before release. The pinned JDK/Gradle/AGP/Kotlin/Compose/SDK set was selected for compatibility, not recency.
 
 ## Stack decisions
 
@@ -86,7 +86,7 @@ Mabhas19/
     └── benchmark/                          # introduced at performance phase
 ```
 
-Only documentation/research paths and `android/README.md` are created now. Add modules as phases require them, with working builds and tests; the tree is a target, not a statement that files already exist. Keep `.github/workflows/` at repository root even though Gradle lives in `android/`.
+The Phase 1 modules (`app`, `core/*`, `feature/projects`) exist and build; later feature modules are added as phases require them, with working builds and tests. The tree is a target, not a statement that every file exists. Keep `.github/workflows/` at repository root even though Gradle lives in `android/`.
 
 Within a feature: `src/main/kotlin/.../<feature>/{navigation,ui,presentation}`, `src/test/kotlin/...`, and `src/androidTest/kotlin/...` for meaningful device UI tests. ViewModels expose immutable UiState and accept user actions. Side effects update durable state and then UI state; avoid unconsumed one-shot event channels for critical save results.
 

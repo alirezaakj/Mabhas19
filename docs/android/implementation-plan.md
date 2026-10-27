@@ -20,13 +20,17 @@ Deliverable: reviewed release scope and contract matrix. Gate: unknown contracts
 
 Dependencies: public discovery; no account required.
 
-1. Select compatible stable tool versions and commit Gradle wrapper, checksums/verification policy, version catalogue and convention plugins under `android/`.
-2. Create app + model/domain/data/network/database/designsystem/testing modules needed for the first slice. Add remaining feature modules incrementally.
-3. Configure Kotlin/Compose/Hilt, build types, manifest/RTL, theme, Persian resources, baseline navigation, logging redaction and local configuration policy.
-4. Add Room project/context/draft schema, migration export, fake repositories and injectable coroutine dispatchers/clock.
-5. Add CI for formatting/static analysis, JVM tests, lint and debug assembly; configure a device smoke job.
+Phase 1 status (2026-10-27): items 1–4 are implemented and locally verified; item 5 (CI) is written but unproven, and the device-side tests exist without having run. See [phase-1-status.md](phase-1-status.md).
+
+1. [x] Select compatible stable tool versions and commit Gradle wrapper, checksums/verification policy, version catalogue and convention plugins under `android/`.
+2. [x] Create app + model/domain/data/network/database/designsystem/testing modules needed for the first slice. Add remaining feature modules incrementally.
+3. [x] Configure Kotlin/Compose/Hilt, build types, manifest/RTL, theme, Persian resources, baseline navigation, logging redaction and local configuration policy. (No logging is emitted yet; the redaction policy applies when logging is added.)
+4. [x] Add Room project/context/draft schema, migration export, fake repositories and injectable coroutine dispatchers/clock.
+5. [ ] Add CI for formatting/static analysis, JVM tests, lint and debug assembly; configure a device smoke job. (Workflow written; never executed.)
 
 Acceptance: clean checkout builds with documented SDK/JDK setup; empty/project screens render in Persian RTL and both themes; CI runs real tests. Tests: digit parsing/units, repository round-trip and one Compose navigation test. Do not ship an empty UI as the feature release.
+
+Evidence (2026-10-27): the documented build and the JVM tests pass locally and the debug APK assembles; RTL/theme rendering was not inspected on a device, the Room/Compose device tests have not run and CI has not executed. This acceptance is therefore **not yet met**.
 
 ## Phase 2 — Projects and air-test vertical slice
 
