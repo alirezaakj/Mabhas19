@@ -49,7 +49,12 @@ subprojects {
     }
     pluginManager.withPlugin("org.jetbrains.kotlin.android") {
         configureQuality()
-        qualityCheck.configure { dependsOn(tasks.named("testDebugUnitTest"), tasks.named("lintDebug")) }
+        qualityCheck.configure {
+            dependsOn(tasks.named("testDebugUnitTest"), tasks.named("lintDebug"))
+            // Compile instrumentation sources without a device so the quality job catches
+            // androidTest breakage that only the emulator job would otherwise reveal.
+            dependsOn(tasks.matching { it.name == "assembleDebugAndroidTest" })
+        }
     }
     pluginManager.withPlugin("com.android.application") {
         qualityCheck.configure { dependsOn(tasks.named("assembleDebug")) }

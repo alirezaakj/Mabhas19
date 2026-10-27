@@ -20,12 +20,13 @@ import org.junit.runner.RunWith
 class LocalRepositoriesTest {
     @Test fun rejectsStaleLocalDraftWithoutOverwritingSavedWork() = runTest {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        Room.inMemoryDatabaseBuilder(context, MabhasDatabase::class.java).build().use { db ->
+        val database = Room.inMemoryDatabaseBuilder(context, MabhasDatabase::class.java).build()
+        try {
             val projects =
-                LocalProjectRepository(db, AppClock { 1234L }, IdGenerator { "local-one" })
+                LocalProjectRepository(database, AppClock { 1234L }, IdGenerator { "local-one" })
             val id = projects.create("  پرونده  ")
             assertEquals("پرونده", projects.observeProject(id).first()?.title)
-            val repository = LocalDraftRepository(db)
+            val repository = LocalDraftRepository(database)
             val first = repository.saveDraft(SectionDraft(id, "air", "{\"value\":1}"))
             assertEquals(1L, first.localRevision)
             try {
@@ -34,6 +35,8 @@ class LocalRepositoriesTest {
             } catch (_: DraftConflictException) {
                 assertEquals(first, repository.observeDraft(id, "air").first())
             }
+        } finally {
+            database.close()
         }
     }
 }
