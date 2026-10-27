@@ -1,6 +1,6 @@
 # Android architecture and project structure
 
-Status: Phase 1 implementation, informed by observed website contracts. A Gradle project exists under `android/`; its JVM checks and debug assembly pass locally ([evidence](phase-1-status.md)), while device tests and CI remain unverified. Package `ir.mabhas19.android` and minSdk 26 are provisional owner decisions; verify name ownership/device audience before release. The pinned JDK/Gradle/AGP/Kotlin/Compose/SDK set was selected for compatibility, not recency.
+Status: Phase 1 implementation, informed by observed website contracts. A Gradle project exists under `android/`; its JVM checks, debug assembly, static analysis and the CI emulator suite pass ([evidence](phase-1-status.md)), while human RTL/accessibility review and release builds remain unverified. Package `ir.mabhas19.android` and minSdk 26 are provisional owner decisions; verify name ownership/device audience before release. The pinned JDK/Gradle/AGP/Kotlin/Compose/SDK set was selected for compatibility, not recency.
 
 ## Stack decisions
 

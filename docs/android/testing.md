@@ -1,6 +1,6 @@
 # Testing and delivery strategy
 
-Status: Phase 1 suite exists and passes on the JVM; instrumentation/Compose tests are written but not yet executed, and CI has not run ([evidence](phase-1-status.md)). Introduce tests with each implementation phase. Favor fast deterministic JVM tests, real local integrations, and a smaller set of end-to-end device journeys. Production services must never be dependencies of normal CI.
+Status: Phase 1 JVM suite and the Room/Compose instrumentation suite pass, the latter on a CI emulator; human visual/a11y review and release-build checks are still outstanding ([evidence](phase-1-status.md)). Introduce tests with each implementation phase. Favor fast deterministic JVM tests, real local integrations, and a smaller set of end-to-end device journeys. Production services must never be dependencies of normal CI.
 
 ## Test layers
 
@@ -50,7 +50,7 @@ Create workflows only after the scaffold supplies working tasks. Set default Gra
 ./gradlew connectedDebugAndroidTest
 ```
 
-Ensure the root quality tasks actually aggregate all relevant modules, including pure JVM tests (`testDebugUnitTest` alone does not cover every JVM module). Use targeted tests during editing, then PR checks on affected components and the aggregate build.
+Ensure the root quality tasks actually aggregate all relevant modules, including pure JVM tests (`testDebugUnitTest` alone does not cover every JVM module) and `assembleDebugAndroidTest` so instrumentation sources compile without a device. Use targeted tests during editing, then PR checks on affected components and the aggregate build.
 
 - Pull requests: format/static checks, JVM/domain/DTO/ViewModel tests, lint, debug build and a focused emulator integration/UI suite. Upload test/lint results and failure screenshots.
 - Nightly/pre-release: supported API/device-size matrix, full Room migration and Compose journeys, JSON/PDF QA, larger datasets and staging-only opt-in checks. Keep secrets and permissions scoped.

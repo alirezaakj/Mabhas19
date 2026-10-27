@@ -28,7 +28,7 @@ cd android
 ./gradlew qualityCheck
 ```
 
-`qualityCheck` aggregates JVM tests in pure Kotlin modules, Android-module debug unit tests, Detekt, ktlint, Android Lint and the debug APK. It deliberately does not require an attached device. `./gradlew ktlintFormat` applies formatting.
+`qualityCheck` aggregates JVM tests in pure Kotlin modules, Android-module debug unit tests, Detekt, ktlint, Android Lint, the debug APK and the debug instrumentation APKs (compiled, not executed). It deliberately does not require an attached device. `./gradlew ktlintFormat` applies formatting.
 
 Device checks require a running emulator or authorized device:
 
@@ -36,7 +36,7 @@ Device checks require a running emulator or authorized device:
 ./gradlew connectedDebugAndroidTest
 ```
 
-They cover Compose create/detail/back navigation with a fake repository, actual Room persistence across reopen, and repository draft conflicts using SQLite. A CI emulator job runs them separately. No automated test contacts the production website.
+They cover Compose create/detail/back navigation with a fake repository, actual Room persistence across reopen, and repository draft conflicts using SQLite. CI boots an API 36 `google_apis` emulator for them in a separate job (green on `ubuntu-24.04` on 2026-10-27). No automated test contacts the production website.
 
 ## Dependency integrity and restricted networks
 

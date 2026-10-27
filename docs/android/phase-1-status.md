@@ -2,7 +2,7 @@
 
 Recorded: **2026-10-27**. Scope: reproducible Gradle skeleton, Persian RTL shell, local guest projects, Room persistence, DataStore theme and the A01 public adapter — the Phase 1 slice of the [implementation plan](implementation-plan.md).
 
-This file records what was executed and observed on one host. It is not a claim that CI, device tests or release builds pass.
+This file records what was executed and observed on one host plus the CI runs that followed. It is not a claim that release builds, visual RTL/a11y checks or the staging service have been verified.
 
 ## Host and toolchain actually used
 
@@ -44,7 +44,9 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 | Detekt (root `config/detekt.yml`) | 10 module checks pass |
 | Android Lint (`warningsAsErrors`) | 5 `lintDebug` checks pass |
 | `:app:assembleDebug` | `app-debug.apk` produced, 13,979,691 bytes |
+| Debug instrumentation APK assembly | 5 modules (`app`, `core:data`, `core:database`, `core:designsystem`, `feature:projects`) build `assembleDebugAndroidTest`; 487-task `qualityCheck` green |
 | Room schema export | `core/database/schemas/ir.mabhas19.core.database.MabhasDatabase/1.json` (3 entity tables), committed for migration tests |
+| CI run [40510309053](https://github.com/alirezaakj/Mabhas19/actions/runs/40510309053) (`75a457b`) | Both jobs **success**: `quality` ran `qualityCheck` on `ubuntu-24.04`; `device-smoke` booted an API 36 `google_apis` x86_64 emulator and ran `connectedDebugAndroidTest` (the androidTest report artifact was produced, so the suite executed rather than being skipped) |
 
 No test contacts the production website. The A01 adapter was exercised only against MockWebServer.
 
@@ -56,17 +58,18 @@ No test contacts the production website. The A01 adapter was exercised only agai
 4. **Root script compiled against a version-catalog accessor that is not visible inside `subprojects {}`.** The ktlint version now comes from `VersionCatalogsExtension` on the root project.
 5. **Formatting drift.** `./gradlew ktlintFormat` applied the `android_studio` style (statement wrapping, no trailing commas). Code was formatted, not rewritten.
 6. **Lint failed on version-availability notices** because `warningsAsErrors = true`. Deliberately pinned versions are exempted in `android/config/lint.xml`; dependency upgrades stay a separate, tested change. Genuine findings were fixed instead: backup extraction rules added for API 31+ (`data_extraction_rules.xml`) with the pre-12 equivalent (`backup_rules.xml`), and an unused string removed.
+7. **The instrumentation tests never compiled.** `RoomDatabase` is not a `java.io.Closeable`, so `.use { }` in the `core:data` and `core:database` tests failed. This blocked the first real device run before any test executed and was invisible to `qualityCheck`, which only built production sources. The tests now close the database in `finally`, and `qualityCheck` depends on every module's `assembleDebugAndroidTest`.
+8. **CI itself failed twice before it could verify anything.** Run [40507549888](https://github.com/alirezaakj/Mabhas19/actions/runs/40507549888) died inside `setup-android@v3` and the emulator step on `ubuntu-latest`; run [40508748666](https://github.com/alirezaakj/Mabhas19/actions/runs/40508748666) passed `quality` but the device job still failed on the androidTest compile error above. The workflow now pins `ubuntu-24.04` and current action majors, and run 40510309053 is green.
 
 ## Not verified
 
 | Item | Why | Follow-up |
 |---|---|---|
-| `connectedDebugAndroidTest` (Room reopen/round-trip, stale-revision conflict, Compose create→detail→back) | Tests exist but no AVD is configured, no `cmdline-tools`/`avdmanager` is installed, no device is attached; only an `android-37.0` `google_apis_playstore` system image is present | Create an API 36 AVD or attach a device, then run the task; add the result here |
-| GitHub Actions (`.github/workflows/android.yml`) | First run ([40507549888](https://github.com/alirezaakj/Mabhas19/actions/runs/40507549888)) failed before Gradle started: `quality` broke inside `android-actions/setup-android@v3` and `device-smoke` inside the emulator-runner step, both on `ubuntu-latest` after that label moved to Ubuntu 26. Neither job installed the SDK or ran a task, so no Gradle/test result exists from CI | Workflow now pins `ubuntu-24.04` and the current action majors (checkout v7, setup-java v6, setup-android v4, setup-gradle v6, upload-artifact v7, emulator target `google_apis`); the next push must be observed before the job is treated as required |
 | Release build, R8 shrinking and signing | Out of Phase 1 scope; no signing configuration exists | Phase 9 |
-| Visual RTL, dark theme, font scale, TalkBack | Compose renders were not inspected on a device/emulator | Phase 1 acceptance recheck on device |
-| `main` history | Phase 1 work was committed as two changes on 2026-10-27 (`c568281`, `c4d43b5`) | Review the commits |
+| Visual RTL, dark theme, font scale, TalkBack | Compose renders were not inspected by a human on a device/emulator; the Compose test asserts navigation and text, not layout direction, contrast or semantics | Phase 1 acceptance recheck on a device |
+| Room migration upgrade path | Only schema version 1 exists, so there is nothing to migrate yet | Add migration tests with the first schema change |
+| `main` history | Phase 1 landed as `c568281`, `c4d43b5`, `469506d` and `75a457b` on 2026-10-27 | Review the commits |
 
 ## Consequence for the plan
 
-Phase 1 build items 1–4 are evidenced above; item 5 (CI) has a workflow that has not yet reached Gradle, let alone passed. The Phase 1 acceptance sentence "CI runs real tests" and the device-side expectations remain open, so Phase 1 is **not** complete and Phase 2 should not be described as started.
+Phase 1 build items 1–4 are evidenced above and item 5 is now demonstrated by a green CI run that executed both the quality job and the emulator suite. The remaining Phase 1 acceptance gap is human inspection of Persian RTL rendering, both themes, font scaling and TalkBack on a device. Phase 1 is therefore **not** fully accepted, and Phase 2 should not be described as started.

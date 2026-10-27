@@ -20,17 +20,17 @@ Deliverable: reviewed release scope and contract matrix. Gate: unknown contracts
 
 Dependencies: public discovery; no account required.
 
-Phase 1 status (2026-10-27): items 1–4 are implemented and locally verified; item 5 (CI) is written but unproven, and the device-side tests exist without having run. See [phase-1-status.md](phase-1-status.md).
+Phase 1 status (2026-10-27): items 1–5 are implemented and verified, including a green CI run that executed the emulator suite. See [phase-1-status.md](phase-1-status.md).
 
 1. [x] Select compatible stable tool versions and commit Gradle wrapper, checksums/verification policy, version catalogue and convention plugins under `android/`.
 2. [x] Create app + model/domain/data/network/database/designsystem/testing modules needed for the first slice. Add remaining feature modules incrementally.
 3. [x] Configure Kotlin/Compose/Hilt, build types, manifest/RTL, theme, Persian resources, baseline navigation, logging redaction and local configuration policy. (No logging is emitted yet; the redaction policy applies when logging is added.)
 4. [x] Add Room project/context/draft schema, migration export, fake repositories and injectable coroutine dispatchers/clock.
-5. [ ] Add CI for formatting/static analysis, JVM tests, lint and debug assembly; configure a device smoke job. (Workflow written; first run failed in action setup before Gradle, see [phase-1-status.md](phase-1-status.md); next run unobserved.)
+5. [x] Add CI for formatting/static analysis, JVM tests, lint and debug assembly; configure a device smoke job.
 
 Acceptance: clean checkout builds with documented SDK/JDK setup; empty/project screens render in Persian RTL and both themes; CI runs real tests. Tests: digit parsing/units, repository round-trip and one Compose navigation test. Do not ship an empty UI as the feature release.
 
-Evidence (2026-10-27): the documented build and the JVM tests pass locally and the debug APK assembles; RTL/theme rendering was not inspected on a device, the Room/Compose device tests have not run and CI has not executed. This acceptance is therefore **not yet met**.
+Evidence (2026-10-27): the documented build, JVM tests, static analysis and debug APK pass locally, and CI runs both the quality job and the Room/Compose device tests on an API 36 emulator. RTL/theme rendering, font scaling and TalkBack have not been inspected by a human, so this acceptance is **not yet fully met**.
 
 ## Phase 2 — Projects and air-test vertical slice
 

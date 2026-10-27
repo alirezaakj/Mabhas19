@@ -2,7 +2,7 @@
 
 Planning and website discovery for a native Kotlin Android app for [mabhas19.ir](https://mabhas19.ir/).
 
-Status: public/guest discovery completed to the documented boundary on **2026-10-27**. The user confirmed **fourth edition first** and deferred authenticated/team inspection. A Phase 1 Android scaffold now exists under `android/` and its JVM build, static analysis and debug assembly pass locally ([evidence](docs/android/phase-1-status.md)); the device/Compose tests are written but have not been executed, and CI has not run.
+Status: public/guest discovery completed to the documented boundary on **2026-10-27**. The user confirmed **fourth edition first** and deferred authenticated/team inspection. A Phase 1 Android scaffold now exists under `android/`; its JVM build, static analysis, debug assembly and CI (including a Room/Compose device suite on an API 36 emulator) pass ([evidence](docs/android/phase-1-status.md)). Human RTL, theme and accessibility review is still pending.
 
 ## Start here
 
