@@ -1,0 +1,975 @@
+{
+  "captured_date": "2026-10-27",
+  "scope": "public guest edition 1399-v4",
+  "pages": [
+    {
+      "url": "https://mabhas19.ir/",
+      "status": 200,
+      "sha256": "fbad225f9405d17969ea9e910d024c67c5d4e6162001212fb2859870035e5d9d"
+    },
+    {
+      "url": "https://mabhas19.ir/index.php",
+      "status": 200,
+      "sha256": "fbad225f9405d17969ea9e910d024c67c5d4e6162001212fb2859870035e5d9d"
+    },
+    {
+      "url": "https://mabhas19.ir/projects.php",
+      "status": 200,
+      "sha256": "c96ec99a2eeb294458de6d50a6366bbf91d8f9cba8f4be2504e31d80543b2aa8"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_general.php",
+      "status": 200,
+      "sha256": "c9fe9fe3bd9ab52086543d4632b22c44950dfc336cd7b5ba99299085260b4eb6"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=mechanical",
+      "status": 200,
+      "sha256": "f79e69262c66f09878f652abd0f48b9813944fba636df906e842929373b16c22"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=electrical",
+      "status": 200,
+      "sha256": "4ee1259c4ae6b950400f176db451260d70887c6c62d32172aefdc2549fcc0ddf"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=renewables",
+      "status": 200,
+      "sha256": "8f7d3cef76e1c1a13bbe69d7d70e94fded32db9109f036c2bcad187c91c731f6"
+    },
+    {
+      "url": "https://mabhas19.ir/supervision/airtightness.php",
+      "status": 200,
+      "sha256": "4764a177a57c60708bde415b52432f13bc874348cea163669471b3623db74eb4"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_dossier.php",
+      "status": 200,
+      "sha256": "2874301a7c90c73b8b4f491174d8cb13d0b429b5fcd694d9e21844480c4e7382"
+    },
+    {
+      "url": "https://mabhas19.ir/dashboard.php",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://mabhas19.ir/team.php",
+      "status": 200,
+      "sha256": "3bd64125a95d325de0983cd8fd4f568651a8c6c2670808144ee4edb05e02c772"
+    },
+    {
+      "url": "https://mabhas19.ir/login.php",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_daylight.php",
+      "status": 200,
+      "sha256": "c8a4951d40f0778d4612d9daa5c067a7adfc81df0de5d6270a524b2e72bc32ca"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_walls.php",
+      "status": 200,
+      "sha256": "e2c7b46efe5295e79788db831d0e3c644716d656f136b3a8ac94aa2260f7757b"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_roof_floor.php",
+      "status": 200,
+      "sha256": "1b5b42a2ea608ae3665c3f3657e8b8e3b673f589bab116db42b16f7df6915c81"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_glazing.php",
+      "status": 200,
+      "sha256": "3de2c850154d65748f32f1fff59bfc2694e3cc9d000549c15779481d3cd13d96"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_occupancy.php",
+      "status": 200,
+      "sha256": "1b294a37dd2db8d3950266bdb7da8fdcfd070bd6327087461b0d45cd12338228"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_general.php?reset=1",
+      "status": 200,
+      "sha256": "c9fe9fe3bd9ab52086543d4632b22c44950dfc336cd7b5ba99299085260b4eb6"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_dossier.php?project_id=guest",
+      "status": 200,
+      "sha256": "7a9ac630d58da3d13ff16a96ec1f5f523c4608c3b77a8f061efcdafea48981d1"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_airtightness.php",
+      "status": 200,
+      "sha256": "da3c4ca03feacbf304205396d3cd7049502ad7118777d56d8b67992f21aef8b1"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_requirements.php?mode=controller",
+      "status": 200,
+      "sha256": "1ca1960a5355b8444b6f4d021aaf96913204a193f5f549ac312087edf3e8bdae"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_report.php?project_id=guest",
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_shading.php",
+      "status": 200,
+      "sha256": "f1105be3a0ac11192124fe2733088fe1170be67bd8af297097df0bbca8b49d88"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_thermal_bridges.php",
+      "status": 200,
+      "sha256": "d69c2936f2971beeb08312897ede62210da5bd7d0d70e8ca4586ef4459bbf9bb"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_boundaries.php",
+      "status": 200,
+      "sha256": "e76591174ce541aace81eea5655ebc11df9c4e7df9190de17603ec01647a3cad"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_assemblies.php?group=wall",
+      "status": 200,
+      "sha256": "28d57ec446bd80983cdb517ace82ea53b78f10869e906de34aae0efc2f1e2f78"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_assemblies.php?group=roof",
+      "status": 200,
+      "sha256": "48441d59eb25060d9e07c5e6c6609977964ac5e17365a54520f8bf9f32ad1ab1"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_general.php?view=facades",
+      "status": 200,
+      "sha256": "78f1e8f2030b6cc35808f7b176cb048e802b5dd51ae1bc29549280d002bfdef1"
+    },
+    {
+      "url": "https://mabhas19.ir/index.php?project_id=guest",
+      "status": 200,
+      "sha256": "eda018f633651f0ee6ecd2f4fbcf4528a0e479aee32bef1b94ee64343d2d08f8"
+    },
+    {
+      "url": "https://mabhas19.ir/projects.php?project_id=guest",
+      "status": 200,
+      "sha256": "e4b958f64109c1036b1f89e700a733261e606e27a9d49b921720a534add51cba"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_general.php?project_id=guest",
+      "status": 200,
+      "sha256": "6a3de527a00be02fc4cb2243e9d6743b752b80c93ab09f0cc73a5f6a304f189a"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=mechanical&project_id=guest",
+      "status": 200,
+      "sha256": "492b8f721d675db95a37109ed2e1a8b0bf9ebcaf5206f4241b870b4861d95167"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=electrical&project_id=guest",
+      "status": 200,
+      "sha256": "efe1fbb3a6ae02fac6d73a395fb72937010df99a5b1ebc5806624c933c3e2c4b"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=renewables&project_id=guest",
+      "status": 200,
+      "sha256": "5c620c115ab3af90727efca2d46b729cf31981eaeb37bcdb9730fdd9ea0e83fc"
+    },
+    {
+      "url": "https://mabhas19.ir/supervision/airtightness.php?project_id=guest",
+      "status": 200,
+      "sha256": "5bcca61cf4204723f7b9e0eddd58ff48c28e56141c7372804dba2b79f3f6391d"
+    },
+    {
+      "url": "https://mabhas19.ir/team.php?project_id=guest",
+      "status": 200,
+      "sha256": "f84c017567143455d992dd11b18419ffe69dc83dd32d6cdeac7563eb22e2c06d"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_requirements.php?mode=controller&project_id=guest",
+      "status": 200,
+      "sha256": "c32d23e8a71c3bb096eace25139ed6fb7449240c0ed40e8d76220d08f7656a29"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_assemblies.php",
+      "status": 200,
+      "sha256": "faee34c0860ee7313f49b04f8294d77a79cdd038c78796cc179dcedefa9cbd11"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_requirements.php",
+      "status": 200,
+      "sha256": "1d5ea616923f6558220bf8afc691aaf95cbb8aa6819856a6f17cf8359ce3df52"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=architecture",
+      "status": 200,
+      "sha256": "b514ddd340c0d6174557abf85f8ce3a9c98ba896f55645e3c4e5446ebef247ae"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_chapter45.php",
+      "status": 200,
+      "sha256": "c88bd1c730ef9786d5353eb36ef531be0360d0421323ba10401f7baf0fd3d603"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_daylight.php?project_id=guest",
+      "status": 200,
+      "sha256": "743283e8d6a7ad0c7abedaae7397e1b4141eef9472fbc8382262aa5c9786623f"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_walls.php?project_id=guest",
+      "status": 200,
+      "sha256": "d7f0c23f736d392001f474c77541bd02074505a3afd9c7cc9bc3a79000d85437"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_roof_floor.php?project_id=guest",
+      "status": 200,
+      "sha256": "936ac9110782649438ff8d527bd1ca1bb616f5642c74b3b61f7c4efb942e3665"
+    },
+    {
+      "url": "https://mabhas19.ir/architecture/arch_glazing.php?project_id=guest",
+      "status": 200,
+      "sha256": "a48a34ab81184b1895b3c0486b5e8956ce4ab8795a9202d1062bbcc7056378e4"
+    }
+  ],
+  "assets": [
+    {
+      "url": "https://mabhas19.ir/assets/access59.js?v=63",
+      "sha256": "39cb3d97d6ffa03c2b6827032b9ec672653a58b8fe6ca3f7fed8a3fa66a084d1"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/access59.js?v=64",
+      "sha256": "39cb3d97d6ffa03c2b6827032b9ec672653a58b8fe6ca3f7fed8a3fa66a084d1"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/account-storage59.js?v=59",
+      "sha256": "13e8d2f6b9576e138696c8a0f446af2c3ef31b3b1fb6a045ff1a94f8acbaed5a"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/appendix8-geometry-v4.js?v=64",
+      "sha256": "89f9957c16ae3179caca6ceb7c72ebc1d5ad1b88eabd0d6f4fd857e8ce42f3b6"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-airtightness.js?v=83",
+      "sha256": "8b022879047ea80f0e5a8677c41901982884667df3b12ad24d9d3932930e6cc3"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-boundaries.js?v=64",
+      "sha256": "977f30e428ea9494dafc87d751daf5a7473d7e24f2ca9ef7be5af93c8e4a03ed"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-chapter45.js?v=90",
+      "sha256": "f92005133c5ec748a0e8a172973005a9cb435ee716f6f17ddd3360ea67ca2cdf"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-checklists.css?v=64",
+      "sha256": "22d9cebd980a91fe696435221194e84d7f1e972b73c2bd649c3a3a8ddb5e5fbd"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-checklists.js?v=91",
+      "sha256": "63cde04cc81678c7cc27afb5c7cbf3fa22e9e2e76d1d2d2ddbd29b9808eb3b0b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-daylight.css?v=64",
+      "sha256": "1c0f82644e4e52128b769e5b9dc8f42a97a30a97d76e8e2ef059d264b6456be3"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-daylight.js?v=64",
+      "sha256": "d74e95612e4d0c3fd3695aa841f2bca0feacce143acb6489f6f09e346fb84d35"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-dossier.css?v=64",
+      "sha256": "edb3109d3db24a529b73c38b611e192a0937935b1999d7657ae1443144d4402d"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-dossier.js?v=86",
+      "sha256": "3a784da6650b6bd62879ee1b6559962722a7ec5dbce5ced8e0fafc029a879002"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-general.css?v=64",
+      "sha256": "e014016cf1d769c459270443468a9fc74a1fbbdb42da2a90454ef2b7abf52787"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-general.js?v=70",
+      "sha256": "83169e7940085df2e0e81f4ed88ee6a64fac641191b7fe8451933517c79203f8"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-glazing-scope69.js?v=69",
+      "sha256": "cba3371921ad8562545a105cf586588b5cf60f1b772682a2e621cf3263a23b54"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-glazing.css?v=64",
+      "sha256": "0b51eb1d04f3412c105f364f340f6911e8e8909f9e25dc3919ad58b52eb5e0dd"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-glazing.js?v=35&s=86",
+      "sha256": "2914d2c42f88bac3eb8467df5fb78a57c46ddc6dc25a8da6bddcda733f448d8a"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-shading-context82.css?v=82",
+      "sha256": "c5c007974ee091d684303cd3797e23cacc7e4fc853795c0a6aeedbec4d3c3c07"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-shading.js?v=77",
+      "sha256": "7202bbb3220076652122dbcda25e7be30904c4db4046e320862d89bc3221af7f"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-shading69.js?v=77",
+      "sha256": "7624182e254184984e14d503a89c3a2fe0498db01f03e03be793b5708aa9c671"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-step10.css?v=64",
+      "sha256": "db1028eda3eae363a4b73a72bd4700706774ff57ced3cf7e5c6a7561820ee3da"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-step11.css?v=64",
+      "sha256": "9de745b4f3f06717914f877a6ec1849d3f827c672f69af2094410b3c9e72445d"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-step7.css?v=64",
+      "sha256": "ff56c53fb5333707757a8458fd5903cb29914ad4fc0f49532e65c5946f199d41"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-step8.css?v=64",
+      "sha256": "3f2c91131f1972f3b54e21902757fb7c5f45dbebbef50edf9967864340ca9a6b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-thermal-bridges.js?v=64",
+      "sha256": "3b287ac5411406fe354fe71c4caa458409dc41d95e895095ff2d5071763e16fb"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-walls.css?v=64",
+      "sha256": "ced88260b5971ac36834aefe1b0eb34ce46a43e3fc5d37033f12a2a3a042522b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-walls.css?v=89",
+      "sha256": "ced88260b5971ac36834aefe1b0eb34ce46a43e3fc5d37033f12a2a3a042522b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/arch-walls.js?v=89",
+      "sha256": "c4b996a97f5efce91b59688ccc3c239a32adabfb7f9fb0ea47a77d40b81e6758"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/clarity61.js?v=63",
+      "sha256": "989f4f2bed33b41495cedecba776bfdea220f555e2c5ef8d4bcca75fc5b3aa25"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/clarity61.js?v=64",
+      "sha256": "989f4f2bed33b41495cedecba776bfdea220f555e2c5ef8d4bcca75fc5b3aa25"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/clarity61.js?v=83",
+      "sha256": "989f4f2bed33b41495cedecba776bfdea220f555e2c5ef8d4bcca75fc5b3aa25"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/clarity61.js?v=86",
+      "sha256": "989f4f2bed33b41495cedecba776bfdea220f555e2c5ef8d4bcca75fc5b3aa25"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/context62.js?v=63",
+      "sha256": "a253dcb0972df0982bcc783d0c2e3242604b37559ca43b0195ac91e37895bfbb"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/context62.js?v=64",
+      "sha256": "a253dcb0972df0982bcc783d0c2e3242604b37559ca43b0195ac91e37895bfbb"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/home-motion80.js?v=82",
+      "sha256": "031c36c3dc48c73521d590d6235dba8df3a5dc07d557bf264c161b3669bad123"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/home59.js?v=63",
+      "sha256": "f4aed398af014923615da0aa87bd1b658dc2e6f503a58082f1762038d19f4b7a"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/material-catalog-step16.css?v=64",
+      "sha256": "1784e628b58fa3b66eeb42f5d0ce173622b4a0fbb464e4cffa364eb99aacb7c4"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/mep-checklist65.css?v=68",
+      "sha256": "6dfffbca5217597f7066575d72645d4d81ece0d986ae26f2190441401b8fe34d"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/mep-checklist65.js?v=91",
+      "sha256": "a1a87baf739cf784d832d2bee6808cb4f8b8069c9710f6492363ba7bbc24e1a7"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/mep-checklist68.css?v=70",
+      "sha256": "3c24017ad8e10a73a3898336b7e413a35664b5aa49fe90a3585d25f0ac057271"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/projects.js?v=63",
+      "sha256": "3b0e56ed14a7edbc7ba086c777443662a36818fdffcacd193875945f7437fdc2"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/renewables-step90.js?v=90",
+      "sha256": "5691d3c9e5ea9ba2d716ce822a5918efd915237c227cacf385f409a0c9c0a63b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/renewables88.css?v=88",
+      "sha256": "a228674e61e8b797e1788e709f97d7166aee337b22a473906a05bcd7f5faf7fc"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/renewables90.css?v=90",
+      "sha256": "bc0945449cb0ccbf1676430f33777a758674b1ac4531b8465a0c1cbf6bbee020"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/roof-floor-multi.css?v=64",
+      "sha256": "6233afe3856ef76ec717b40034021c7f9b4ab78ca219ecef912e714198847924"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/roof-floor.js?v=89",
+      "sha256": "f7bb7df9ba316df6756a285b34eed8e1ffcbf1c7d7890f45d46c8421385df5bc"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/standard-products58.js?v=63",
+      "sha256": "e554558e38c244620660af65ff32433a4a486760fe88e365fe3c2679c54083c2"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/standard-products58.js?v=64",
+      "sha256": "e554558e38c244620660af65ff32433a4a486760fe88e365fe3c2679c54083c2"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/standard-products58.js?v=86",
+      "sha256": "e554558e38c244620660af65ff32433a4a486760fe88e365fe3c2679c54083c2"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/system-scope63.css?v=64",
+      "sha256": "fce92e9f92951b36cb4713f6b8ea95dbdaa48c8f37357c07fd73f8c252933ae9"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/system-scope63.js?v=91",
+      "sha256": "92d32698472b543bd3603d93139fbb83b68f5433ecf1d736a84aebaee547b356"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/team59.js?v=63",
+      "sha256": "2ca8c6f548b87930427dcaab19fc42c9d98dcf1b95a57472dc3c328a6e2ce528"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-architecture71.css?v=71",
+      "sha256": "979f213aad37c832da8873dc8d142e6a82f2645879e8021e3701dfa5960daf22"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-architecture78.css?v=78",
+      "sha256": "81eb169b2110d1293ff449acb84d1562acc016349723d591887e21d62ed1a134"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-assembly-core.js?v=64",
+      "sha256": "ca889a8f850887ed90e6beb4ee5c0ca9a87a2a2f577a485697fda93337213aff"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-assembly-manager.js?v=64",
+      "sha256": "c396143c42c04c85ad09b0fdf846b799ff40a5a4bcf31c054f4e0727fb2a63b6"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-assembly-server.js?v=64",
+      "sha256": "e21565ce42d2742f80a728951d8d9111f1eb3415f25f586140df359ce5f1ed81"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-assembly-ui.js?v=64",
+      "sha256": "d6e044c34ea28df97f9dc51c472e70f7d38d642a8224c64777dcc699950c089e"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-assembly.css?v=64",
+      "sha256": "7edc57b917f34982b7f361840ba288a5a5e6de18f3eef74e3ecfb712cde62edf"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-city-autofill.css?v=64",
+      "sha256": "215d842f8d6e339ba03a9029141ee298ccb6607f8fa3ec12ec8ddf3c4feaf9e6"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-city-autofill.js?v=64",
+      "sha256": "179a46612659852488e1b3499e3517378696b23a54cee99dc93f8edac3bb10d5"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-clarity61.css?v=63",
+      "sha256": "8cb9eb75cc9509288fa05986a54941e580d18e577ba8c137469b14243d2cd7f4"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-clarity61.css?v=64",
+      "sha256": "8cb9eb75cc9509288fa05986a54941e580d18e577ba8c137469b14243d2cd7f4"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-clarity61.css?v=83",
+      "sha256": "8cb9eb75cc9509288fa05986a54941e580d18e577ba8c137469b14243d2cd7f4"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-clarity61.css?v=86",
+      "sha256": "8cb9eb75cc9509288fa05986a54941e580d18e577ba8c137469b14243d2cd7f4"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-context54.js?v=63",
+      "sha256": "6b588de8506fdfeb7feb3e83608eb0ac0c6778a27dc38822c89ba89569e7b838"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-context54.js?v=64",
+      "sha256": "6b588de8506fdfeb7feb3e83608eb0ac0c6778a27dc38822c89ba89569e7b838"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-draft-sync.css?v=64",
+      "sha256": "4f21a3534526e591cf048597e577c7fd90de494eb7870aeb20549c9061bb534a"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-draft-sync.js?v=70",
+      "sha256": "c169d5e9618349329ff7f5583b725ac04c4da5e24828a372fd41df98172d7382"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-draft-sync.js?v=83",
+      "sha256": "c169d5e9618349329ff7f5583b725ac04c4da5e24828a372fd41df98172d7382"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-entry60.css?v=63",
+      "sha256": "ff052953f517659961b8abdba078bf0a3c7d1ea1f2da4ad55d0cf7cfc8460423"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-entry60.css?v=64",
+      "sha256": "ff052953f517659961b8abdba078bf0a3c7d1ea1f2da4ad55d0cf7cfc8460423"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-forms54.css?v=63",
+      "sha256": "4ddaf629b4efab7a91b2186ff932027d8cc2067b16f54fc6caecb67e2199615c"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-forms54.css?v=64",
+      "sha256": "4ddaf629b4efab7a91b2186ff932027d8cc2067b16f54fc6caecb67e2199615c"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-home-motion80.css?v=82",
+      "sha256": "968588b5e7ab7372b16544f1d90eb629b51aaf5693ecbb6a699a0d1442837594"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-home59.css?v=63",
+      "sha256": "7c01fbb89167a6333567fae35bf18998ee7b0360b87b28e3e776affc142d0849"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-layout57.css?v=63",
+      "sha256": "79616998dd10be37baa4bd6563feceb58656c1c02dab6ebe7a3619327ae6a131"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-layout57.css?v=64",
+      "sha256": "79616998dd10be37baa4bd6563feceb58656c1c02dab6ebe7a3619327ae6a131"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-layout57.js?v=71",
+      "sha256": "41ab2d1968b95000a5a9b55a809f3498e3979e7c088848b42b77f529ebc52600"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-layout57.js?v=75",
+      "sha256": "41ab2d1968b95000a5a9b55a809f3498e3979e7c088848b42b77f529ebc52600"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-material-picker86.js?v=86",
+      "sha256": "08f76981667448e19cc617fd98992427e97fed4c51a0b906245d9bdaaa06ebc3"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-materials56.css?v=63",
+      "sha256": "e3e265e01947bb605570f1dfc71440606ebfc728d553a3451c381c866e8c7323"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-materials56.css?v=64",
+      "sha256": "e3e265e01947bb605570f1dfc71440606ebfc728d553a3451c381c866e8c7323"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-materials56.css?v=86",
+      "sha256": "e3e265e01947bb605570f1dfc71440606ebfc728d553a3451c381c866e8c7323"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-materials56.js?v=63",
+      "sha256": "443661fce47e15957cca70130021837945bd66ed7707471fb4d8f9c9434fb0dd"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-materials56.js?v=64",
+      "sha256": "443661fce47e15957cca70130021837945bd66ed7707471fb4d8f9c9434fb0dd"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-materials56.js?v=86",
+      "sha256": "443661fce47e15957cca70130021837945bd66ed7707471fb4d8f9c9434fb0dd"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-materials56.js?v=88",
+      "sha256": "443661fce47e15957cca70130021837945bd66ed7707471fb4d8f9c9434fb0dd"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-profile-readonly84.css?v=86",
+      "sha256": "f85c72118028123b550892729b20b0fa790b73b464229fe57725dc3ef60f916c"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-profile-readonly84.js?v=86",
+      "sha256": "d715b4b17bd02b2ce211238656df796d0d22aa91cdf72f2793376f63548f0b85"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-project-links.js?v=64",
+      "sha256": "c36a16010c44e86a3c55dbf49059287461b58813112293a8ae1c0f91386e67c7"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-responsive.js?v=63",
+      "sha256": "ac937455ef9a75ff3deb1b5255c2d042aa0eab0c14a2e390e82253087a1dcf79"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-responsive.js?v=64",
+      "sha256": "ac937455ef9a75ff3deb1b5255c2d042aa0eab0c14a2e390e82253087a1dcf79"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-seed58.css?v=63",
+      "sha256": "87076e4e209fa848409dceec7b4e1f93d12f80c67a8e6dc8620af63e7923a682"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-seed58.css?v=64",
+      "sha256": "87076e4e209fa848409dceec7b4e1f93d12f80c67a8e6dc8620af63e7923a682"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-seed58.js?v=63",
+      "sha256": "b7c38a88bed694b9d37b08b8ead5e95ccffdb13190f5e720eb76de6ada4ea57b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-seed58.js?v=64",
+      "sha256": "b7c38a88bed694b9d37b08b8ead5e95ccffdb13190f5e720eb76de6ada4ea57b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-seed58.js?v=86",
+      "sha256": "b7c38a88bed694b9d37b08b8ead5e95ccffdb13190f5e720eb76de6ada4ea57b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-shared-context.js?v=63",
+      "sha256": "235d96a87744e610aa1dd7818ab591096736e796fa3c6c43aee409a274ffcd4e"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-shared-context.js?v=64",
+      "sha256": "235d96a87744e610aa1dd7818ab591096736e796fa3c6c43aee409a274ffcd4e"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-shared-context.js?v=77",
+      "sha256": "235d96a87744e610aa1dd7818ab591096736e796fa3c6c43aee409a274ffcd4e"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-shared-context.js?v=86",
+      "sha256": "235d96a87744e610aa1dd7818ab591096736e796fa3c6c43aee409a274ffcd4e"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-start70.css?v=70",
+      "sha256": "8c5d870eb6e129f68e0487724035e793fcf3630f5841dbab88835b84daf2dddb"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-step38.css?v=64",
+      "sha256": "0cc5fd92e72e4067b47faafaa3d5af3cf0b021f82f488006281f4634f5242a4f"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-step38.js?v=64",
+      "sha256": "7fdfaea702d15379ffb5a31ef1a62f844be81fa6fb77ae41ab78355394c26c96"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-step38.js?v=83",
+      "sha256": "7fdfaea702d15379ffb5a31ef1a62f844be81fa6fb77ae41ab78355394c26c96"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-step69.css?v=69",
+      "sha256": "a3925fc8e37f8b0279225173c74175a216a7ac7e1d5c5d07c94c2f0d75d63849"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-step74-delight.css?v=75",
+      "sha256": "b7f7a08f34c8ec4afa9475f36b7983c17964a50ca3e9a77922a6d50d24ac7c80"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-step74-delight.css?v=77",
+      "sha256": "b7f7a08f34c8ec4afa9475f36b7983c17964a50ca3e9a77922a6d50d24ac7c80"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-step74-delight.css?v=83",
+      "sha256": "b7f7a08f34c8ec4afa9475f36b7983c17964a50ca3e9a77922a6d50d24ac7c80"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-superhuman-editorial.css?v=63",
+      "sha256": "23c6d4aedde6d9b5616e7b28fcd9672d7d6d50b40cbcc124d51ed7304c071c17"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-superhuman-editorial.css?v=64",
+      "sha256": "23c6d4aedde6d9b5616e7b28fcd9672d7d6d50b40cbcc124d51ed7304c071c17"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-supervision70.css?v=70",
+      "sha256": "e78244b09960330bce7c3a862e8b249eff61f98585e34ffec59202217b9fb8e7"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-tables54.js?v=63",
+      "sha256": "9373c703f6b91644cd4307785da63f9d67ebdc266fe330c0624204734da54adf"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-tables54.js?v=64",
+      "sha256": "9373c703f6b91644cd4307785da63f9d67ebdc266fe330c0624204734da54adf"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-tables54.js?v=86",
+      "sha256": "9373c703f6b91644cd4307785da63f9d67ebdc266fe330c0624204734da54adf"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-ux-step4.css?v=64",
+      "sha256": "f83fe9c28f1e98291735af164a3eb7566b13b98b1c3806567fbd134394cfde42"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-ux-step5.css?v=64",
+      "sha256": "e1e111d4104fcab1bbfe833092eb0ae5693c686fb0e1822e635b1e197972dfac"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-v5style-envelope85.css?v=85",
+      "sha256": "c517711e0b463bba22e3a3b8c07e063a3346f38ef7f451785f214b1f9c580f14"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-v5style-envelope85.css?v=86",
+      "sha256": "c517711e0b463bba22e3a3b8c07e063a3346f38ef7f451785f214b1f9c580f14"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workflow55.css?v=63",
+      "sha256": "f126255a9bae38a3fe678b7f896a2d45a10ddfbef8afad05f7fc33e4447f89c6"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workflow55.css?v=64",
+      "sha256": "f126255a9bae38a3fe678b7f896a2d45a10ddfbef8afad05f7fc33e4447f89c6"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workflow55.css?v=85",
+      "sha256": "f126255a9bae38a3fe678b7f896a2d45a10ddfbef8afad05f7fc33e4447f89c6"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workflow55.css?v=86",
+      "sha256": "f126255a9bae38a3fe678b7f896a2d45a10ddfbef8afad05f7fc33e4447f89c6"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workflow55.js?v=70",
+      "sha256": "ec1b50d343fc85f7474d6dd20116ec58aa77b54e6e94ddf88edc41cba34a6420"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workflow55.js?v=75",
+      "sha256": "ec1b50d343fc85f7474d6dd20116ec58aa77b54e6e94ddf88edc41cba34a6420"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workflow55.js?v=85",
+      "sha256": "ec1b50d343fc85f7474d6dd20116ec58aa77b54e6e94ddf88edc41cba34a6420"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workspace.css?v=63",
+      "sha256": "81dabd5e1b0060b445c7f45ce70e7a03468291c2ca40bc39bf5b83320ac5c457"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workspace.css?v=64",
+      "sha256": "81dabd5e1b0060b445c7f45ce70e7a03468291c2ca40bc39bf5b83320ac5c457"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workspace.js?v=63",
+      "sha256": "66fde8a687483cd21986005ffdfe124d002ea65f7ad698374750d92224475040"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4-workspace.js?v=64",
+      "sha256": "66fde8a687483cd21986005ffdfe124d002ea65f7ad698374750d92224475040"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4.css?v=63",
+      "sha256": "9b78e789a246b13201e1410da74e80885e850536e5457f8d86535f91281b4d80"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/v4.css?v=64",
+      "sha256": "9b78e789a246b13201e1410da74e80885e850536e5457f8d86535f91281b4d80"
+    }
+  ],
+  "rea": [
+    {
+      "scenario": "home-mobile",
+      "evidence_id": "ev_3b186ef241865b7b968a168df3cefe6dcd9815252fd647049e3ca4a1dc94681f",
+      "capture_sha256": "3d47d184fd4dad06119c93d9425b54680b8c8ab92c856e2764605fdb7dd1b7e1",
+      "completeness": {
+        "status": "incomplete",
+        "equality_eligible": false,
+        "missing_sections": [
+          "events"
+        ],
+        "truncated_sections": []
+      },
+      "browser": {
+        "mode": "launch",
+        "process_ownership": "provider-owned",
+        "cleanup": "terminated-owned-process",
+        "product": "Chromium",
+        "version": "156.0.8078.48"
+      },
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Captured response-body bytes are the result of Playwright's Response.body() API. Playwright may satisfy that API with a credentialed follow-up load of the request URL when CDP has no body, so transaction and event links do not verify that retained bytes came from the original network transaction.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "Some selected network content was unavailable; per-transaction content states retain the reason.",
+        "Browser host platform and architecture were not observed.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Captured response-body bytes are the result of Playwright's Response.body() API. Playwright may satisfy that API with a credentialed follow-up load of the request URL when CDP has no body, so transaction and event links do not verify that retained bytes came from the original network transaction.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "Some selected network content was unavailable; per-transaction content states retain the reason."
+      ]
+    },
+    {
+      "scenario": "architecture-desktop",
+      "evidence_id": "ev_6fcf00b0100467f70328cd9587aeabbf8b221be26e14e2cbf438cd916f7e274f",
+      "capture_sha256": "b6926ce152926b5c9ffa87b6d30ec05399076d0add593a83a3bf74697a359b12",
+      "completeness": {
+        "status": "incomplete",
+        "equality_eligible": false,
+        "missing_sections": [
+          "events"
+        ],
+        "truncated_sections": []
+      },
+      "browser": {
+        "mode": "launch",
+        "process_ownership": "provider-owned",
+        "cleanup": "terminated-owned-process",
+        "product": "Chromium",
+        "version": "156.0.8078.48"
+      },
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Captured response-body bytes are the result of Playwright's Response.body() API. Playwright may satisfy that API with a credentialed follow-up load of the request URL when CDP has no body, so transaction and event links do not verify that retained bytes came from the original network transaction.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "Some selected network content was unavailable; per-transaction content states retain the reason.",
+        "Browser host platform and architecture were not observed.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Captured response-body bytes are the result of Playwright's Response.body() API. Playwright may satisfy that API with a credentialed follow-up load of the request URL when CDP has no body, so transaction and event links do not verify that retained bytes came from the original network transaction.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "Some selected network content was unavailable; per-transaction content states retain the reason."
+      ]
+    },
+    {
+      "scenario": "airtightness-sample",
+      "evidence_id": "ev_f70d44801dd16726aae404d14897a4ad875f1ff8edb4f4f021b839d767875d64",
+      "capture_sha256": "18aadc1291926b7ede671741d32fbc1bd07c9e4df04b93f295af49d3687a28a8",
+      "completeness": {
+        "status": "incomplete",
+        "equality_eligible": false,
+        "missing_sections": [
+          "events"
+        ],
+        "truncated_sections": []
+      },
+      "browser": {
+        "mode": "launch",
+        "process_ownership": "provider-owned",
+        "cleanup": "terminated-owned-process",
+        "product": "Chromium",
+        "version": "156.0.8078.48"
+      },
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Captured response-body bytes are the result of Playwright's Response.body() API. Playwright may satisfy that API with a credentialed follow-up load of the request URL when CDP has no body, so transaction and event links do not verify that retained bytes came from the original network transaction.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "Some selected network content was unavailable; per-transaction content states retain the reason.",
+        "Browser host platform and architecture were not observed.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Captured response-body bytes are the result of Playwright's Response.body() API. Playwright may satisfy that API with a credentialed follow-up load of the request URL when CDP has no body, so transaction and event links do not verify that retained bytes came from the original network transaction.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "Some selected network content was unavailable; per-transaction content states retain the reason."
+      ]
+    }
+  ],
+  "api_reads": [
+    {
+      "url": "https://mabhas19.ir/api/reference.php",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "reference"
+      ]
+    },
+    {
+      "url": "https://mabhas19.ir/api/projects.php",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "mode",
+        "projects"
+      ]
+    },
+    {
+      "url": "https://mabhas19.ir/api/team.php",
+      "status": 422,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "error"
+      ]
+    },
+    {
+      "url": "https://mabhas19.ir/api/arch_general.php",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "mode"
+      ]
+    },
+    {
+      "url": "https://mabhas19.ir/api/arch_walls.php",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "mode",
+        "rules",
+        "csrf"
+      ]
+    },
+    {
+      "url": "https://mabhas19.ir/api/architecture_drafts.php?project_id=guest&section=arch_daylight",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "mode",
+        "server_storage",
+        "error"
+      ]
+    },
+    {
+      "url": "https://mabhas19.ir/api/architecture_assemblies.php?project_id=guest",
+      "status": 200,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "mode",
+        "server_storage",
+        "error"
+      ]
+    },
+    {
+      "url": "https://mabhas19.ir/api/architecture_dossier.php?project_id=guest",
+      "status": 403,
+      "content_type": "application/json; charset=utf-8",
+      "keys": [
+        "ok",
+        "error"
+      ]
+    }
+  ],
+  "skill": {
+    "source": "https://github.com/morluto/rea/tree/main/.agents/skills/reverse-engineer-anything",
+    "skill_sha256": "547bffd9dcbb88378a488bada8ea32c60bddd561ccee5246be996e993c5a7113",
+    "cli_version_used": "6.8.0",
+    "node_version_used": "24.22.1"
+  }
+}

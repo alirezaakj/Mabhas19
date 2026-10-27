@@ -1,0 +1,172 @@
+{
+  "source_evidence_id": "ev_f70d44801dd16726aae404d14897a4ad875f1ff8edb4f4f021b839d767875d64",
+  "method": "POST",
+  "path": "/api/arch_airtightness.php",
+  "scenario": "site-provided sample in isolated guest browser",
+  "status": 200,
+  "request": {
+    "edition": "1399-v4",
+    "entries": {},
+    "design": {
+      "energy_class": "EC",
+      "controlled_area_m2": 1000,
+      "average_height_m": 3,
+      "subzone_test": "no"
+    },
+    "test": {
+      "pressure_pa": 50,
+      "airflow_m3h": 6750,
+      "volume_m3": 3000,
+      "source": "AIR-1404-01"
+    }
+  },
+  "response": {
+    "ok": true,
+    "result": {
+      "edition": "1399-v4",
+      "kind": "site-evidence-air-sealing",
+      "items": [
+        {
+          "id": "window_perimeter",
+          "title": "اتصال قاب پنجره و درهای خارجی به پوسته",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "operable_seals",
+          "title": "نوار درزبند، واشر و یراق بازشوها",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "wall_roof_joint",
+          "title": "اتصال دیوار خارجی به بام و سقف",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "wall_floor_joint",
+          "title": "اتصال دیوار به کف، فونداسیون و مجاورت خاک",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "wall_corner",
+          "title": "گوشه‌ها و اتصالات اجزای پیش‌ساخته یا دیوارهای ناهمجنس",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "penetrations",
+          "title": "نفوذ لوله، کابل، کانال و تجهیزات از پوسته",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "shafts",
+          "title": "درز پیرامون داکت، شفت و فضاهای خدماتی",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "hatches",
+          "title": "دریچه بازدید، دسترسی به بام و فضای زیرشیروانی",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "curtain_wall",
+          "title": "اتصالات و درزهای نمای شیشه‌ای یا نمای خشک، در صورت وجود",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "air_barrier",
+          "title": "پیوستگی مسیر لایه هوابند روی نقشه‌های جزئیات",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        },
+        {
+          "id": "inspection",
+          "title": "ثبت بازدید و تأیید جزئیات قبل از پوشانده‌شدن",
+          "declared_status": "unknown",
+          "evidence": null,
+          "comment": null,
+          "audit_flag": "unknown"
+        }
+      ],
+      "counts": {
+        "documented": 0,
+        "missing_document": 0,
+        "attention": 0,
+        "unknown": 11,
+        "not_applicable": 0
+      },
+      "test": {
+        "pressure_pa": 50.0,
+        "airflow_m3h": 6750.0,
+        "volume_m3": 3000.0,
+        "ach_at_test_pressure": 2.25,
+        "is_n50": true,
+        "source": "AIR-1404-01",
+        "issues": []
+      },
+      "normative_precheck": {
+        "source": "ویرایش چهارم ۱۳۹۹، بند ۱۹-۴-۲-۶-۱، جدول ۱۹-۴-۳، صفحه چاپی ۴۹",
+        "status": "review_required",
+        "visual_verification_pending": false,
+        "table_printed_page_verified": 49,
+        "limit_values_in_text_transcription": {
+          "EC": {
+            "volume_h1": 3.0,
+            "surface_mh": 9.0
+          },
+          "EC+": {
+            "volume_h1": 1.5,
+            "surface_mh": 4.5
+          },
+          "EC++": {
+            "volume_h1": 0.75,
+            "surface_mh": 2.25
+          }
+        },
+        "energy_class": "EC",
+        "controlled_area_m2": 1000.0,
+        "average_height_m": 3.0,
+        "subzone_test": "no",
+        "selected_metric": "volumetric_n50",
+        "calculated_value": 2.25,
+        "limit": 3.0,
+        "strict_comparison": "<",
+        "numeric_precheck": "below_limit",
+        "issues": [],
+        "regulatory_approval": false,
+        "note": "کنترل حدود مجاز نشت هوا بر اساس جدول ۱۹-۴-۳ مبحث ۱۹ (اختلاف فشار ۵۰ پاسکال)."
+      },
+      "overall": "review_required",
+      "numeric_regulatory_limit_applied": true,
+      "building_energy_grade_approved": false,
+      "note": "بررسی حدود مجاز نشت هوا مطابق جدول ۱۹-۴-۳ مبحث ۱۹ ویرایش چهارم."
+    }
+  }
+}

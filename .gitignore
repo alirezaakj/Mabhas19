@@ -1,0 +1,14 @@
+# Local website captures can contain session or project data.
+research/local/
+.research-runtime/
+node_modules/
+.DS_Store
+local.properties
+**/build/
+.gradle/
+.kotlin/
+*.jks
+*.keystore
+.env
+__pycache__/
+*.pyc
