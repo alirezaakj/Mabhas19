@@ -62,11 +62,11 @@ No test contacts the production website. The A01 adapter was exercised only agai
 | Item | Why | Follow-up |
 |---|---|---|
 | `connectedDebugAndroidTest` (Room reopen/round-trip, stale-revision conflict, Compose create→detail→back) | Tests exist but no AVD is configured, no `cmdline-tools`/`avdmanager` is installed, no device is attached; only an `android-37.0` `google_apis_playstore` system image is present | Create an API 36 AVD or attach a device, then run the task; add the result here |
-| GitHub Actions (`.github/workflows/android.yml`) | Workflow has never run; repository has not been pushed | Observe the first run before treating the job as required |
+| GitHub Actions (`.github/workflows/android.yml`) | First run ([40507549888](https://github.com/alirezaakj/Mabhas19/actions/runs/40507549888)) failed before Gradle started: `quality` broke inside `android-actions/setup-android@v3` and `device-smoke` inside the emulator-runner step, both on `ubuntu-latest` after that label moved to Ubuntu 26. Neither job installed the SDK or ran a task, so no Gradle/test result exists from CI | Workflow now pins `ubuntu-24.04` and the current action majors (checkout v7, setup-java v6, setup-android v4, setup-gradle v6, upload-artifact v7, emulator target `google_apis`); the next push must be observed before the job is treated as required |
 | Release build, R8 shrinking and signing | Out of Phase 1 scope; no signing configuration exists | Phase 9 |
 | Visual RTL, dark theme, font scale, TalkBack | Compose renders were not inspected on a device/emulator | Phase 1 acceptance recheck on device |
-| `main` history | Phase 1 work is a single reviewable change, not yet committed when this was written | Commit after review |
+| `main` history | Phase 1 work was committed as two changes on 2026-10-27 (`c568281`, `c4d43b5`) | Review the commits |
 
 ## Consequence for the plan
 
-Phase 1 build items 1–4 are evidenced above; item 5 (CI) is written but unproven. The Phase 1 acceptance sentence "CI runs real tests" and the device-side expectations remain open, so Phase 1 is **not** complete and Phase 2 should not be described as started.
+Phase 1 build items 1–4 are evidenced above; item 5 (CI) has a workflow that has not yet reached Gradle, let alone passed. The Phase 1 acceptance sentence "CI runs real tests" and the device-side expectations remain open, so Phase 1 is **not** complete and Phase 2 should not be described as started.

@@ -26,7 +26,7 @@ Phase 1 status (2026-10-27): items 1–4 are implemented and locally verified; i
 2. [x] Create app + model/domain/data/network/database/designsystem/testing modules needed for the first slice. Add remaining feature modules incrementally.
 3. [x] Configure Kotlin/Compose/Hilt, build types, manifest/RTL, theme, Persian resources, baseline navigation, logging redaction and local configuration policy. (No logging is emitted yet; the redaction policy applies when logging is added.)
 4. [x] Add Room project/context/draft schema, migration export, fake repositories and injectable coroutine dispatchers/clock.
-5. [ ] Add CI for formatting/static analysis, JVM tests, lint and debug assembly; configure a device smoke job. (Workflow written; never executed.)
+5. [ ] Add CI for formatting/static analysis, JVM tests, lint and debug assembly; configure a device smoke job. (Workflow written; first run failed in action setup before Gradle, see [phase-1-status.md](phase-1-status.md); next run unobserved.)
 
 Acceptance: clean checkout builds with documented SDK/JDK setup; empty/project screens render in Persian RTL and both themes; CI runs real tests. Tests: digit parsing/units, repository round-trip and one Compose navigation test. Do not ship an empty UI as the feature release.
 
