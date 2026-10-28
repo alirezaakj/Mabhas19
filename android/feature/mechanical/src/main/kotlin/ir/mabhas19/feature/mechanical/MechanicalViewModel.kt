@@ -34,6 +34,9 @@ import kotlinx.serialization.json.encodeToJsonElement
 
 enum class MechanicalError { STORAGE, CONFLICT, UNSUPPORTED_DRAFT, INVALID_TITLE }
 
+private const val RECOVERY_PROJECT_KEY = "mechanicalRecoveryProject"
+private const val RECOVERY_PAYLOAD_KEY = "mechanicalRecoveryPayload"
+
 data class MechanicalState(
     val projectId: ProjectId? = null,
     val projectTitle: String = "",
@@ -68,7 +71,9 @@ class MechanicalViewModel @Inject constructor(
     )
 
     init {
-        viewModelScope.launch { edits.debounce(600).collect { persist() } }
+        viewModelScope.launch {
+            edits.debounce(600).collect { mutex.withLock { persistLocked() } }
+        }
         savedState.get<String>(PROJECT_KEY)?.let { selectProject(ProjectId(it)) }
     }
 
@@ -127,9 +132,10 @@ class MechanicalViewModel @Inject constructor(
 
     fun update(draft: MechanicalDraft) {
         val current = mutableState.value
-        if (!current.editable || transitioning || current.loading) return
         val projectId = current.projectId ?: return
-        if (draft.schemaVersion != 1 || draft.edition != EDITION) return
+        val isBusy = transitioning || current.loading
+        val hasSupportedSchema = draft.schemaVersion == 1 && draft.edition == EDITION
+        if (!current.editable || isBusy || !hasSupportedSchema) return
         mutableState.value = current.copy(draft = draft, saved = false)
         savedState[RECOVERY_PROJECT_KEY] = projectId.value
         savedState[RECOVERY_PAYLOAD_KEY] = json.encodeToString(draft)
@@ -138,47 +144,53 @@ class MechanicalViewModel @Inject constructor(
     }
 
     fun save() {
-        viewModelScope.launch { persist() }
+        viewModelScope.launch { mutex.withLock { persistLocked() } }
     }
-
-    private suspend fun persist() = mutex.withLock { persistLocked() }
 
     private suspend fun persistLocked(): Boolean {
         val current = mutableState.value
         val id = current.projectId
         if (id == null || !draftLoaded || current.saved) return true
-        if (current.error in setOf(MechanicalError.UNSUPPORTED_DRAFT, MechanicalError.CONFLICT)) {
-            return false
-        }
-        mutableState.value = current.copy(saving = true)
-        return try {
-            val stored = drafts.saveDraft(
-                SectionDraft(id, SECTION, encodeEnvelope(envelope, current.draft), current.revision)
-            )
-            mutableState.value = mutableState.value.copy(
-                revision = stored.localRevision,
-                saving = false,
-                saved = true,
-                error = null
-            )
-            savedState.remove<String>(RECOVERY_PROJECT_KEY)
-            savedState.remove<String>(RECOVERY_PAYLOAD_KEY)
-            savedState.remove<Long>(RECOVERY_REVISION_KEY)
-            true
-        } catch (error: CancellationException) {
-            throw error
-        } catch (_: DraftConflictException) {
-            mutableState.value = mutableState.value.copy(
-                saving = false,
-                error = MechanicalError.CONFLICT
-            )
+        return if (
+            current.error in setOf(MechanicalError.UNSUPPORTED_DRAFT, MechanicalError.CONFLICT)
+        ) {
             false
-        } catch (_: Exception) {
-            mutableState.value = mutableState.value.copy(
-                saving = false,
-                error = MechanicalError.STORAGE
-            )
-            false
+        } else {
+            mutableState.value = current.copy(saving = true)
+            try {
+                val stored = drafts.saveDraft(
+                    SectionDraft(
+                        id,
+                        SECTION,
+                        encodeEnvelope(envelope, current.draft),
+                        current.revision
+                    )
+                )
+                mutableState.value = mutableState.value.copy(
+                    revision = stored.localRevision,
+                    saving = false,
+                    saved = true,
+                    error = null
+                )
+                savedState.remove<String>(RECOVERY_PROJECT_KEY)
+                savedState.remove<String>(RECOVERY_PAYLOAD_KEY)
+                savedState.remove<Long>(RECOVERY_REVISION_KEY)
+                true
+            } catch (error: CancellationException) {
+                throw error
+            } catch (_: DraftConflictException) {
+                mutableState.value = mutableState.value.copy(
+                    saving = false,
+                    error = MechanicalError.CONFLICT
+                )
+                false
+            } catch (_: Exception) {
+                mutableState.value = mutableState.value.copy(
+                    saving = false,
+                    error = MechanicalError.STORAGE
+                )
+                false
+            }
         }
     }
 
@@ -191,11 +203,7 @@ class MechanicalViewModel @Inject constructor(
             val stored = drafts.observeDraft(id, SECTION).first()
             val loaded = stored?.payloadJson?.let(::decodeEnvelope)
             envelope = loaded?.first ?: emptyEnvelope()
-            val recovery = if (savedState.get<String>(RECOVERY_PROJECT_KEY) == id.value) {
-                savedState.get<String>(RECOVERY_PAYLOAD_KEY)
-            } else {
-                null
-            }
+            val recovery = recoveryPayload(savedState, id)
             val storedRevision = stored?.localRevision ?: 0L
             val recoveryRevision = savedState.get<Long>(RECOVERY_REVISION_KEY)
             val conflict = recovery != null && recoveryRevision != storedRevision
@@ -264,12 +272,15 @@ class MechanicalViewModel @Inject constructor(
             }
             put("nativeWorkspaceSchema", JsonPrimitive(1))
             put("edition", JsonPrimitive(EDITION))
-            put("projections", buildJsonObject {
-                oldProjections.forEach { (key, value) ->
-                    if (key != PROJECTION_KEY) put(key, value)
+            put(
+                "projections",
+                buildJsonObject {
+                    oldProjections.forEach { (key, value) ->
+                        if (key != PROJECTION_KEY) put(key, value)
+                    }
+                    put(PROJECTION_KEY, json.encodeToJsonElement(draft))
                 }
-                put(PROJECTION_KEY, json.encodeToJsonElement(draft))
-            })
+            )
         }
         return json.encodeToString(updated)
     }
@@ -281,8 +292,6 @@ class MechanicalViewModel @Inject constructor(
         private const val EDITION = "1399-v4"
         private const val PROJECTION_KEY = "mechanical"
         private const val PROJECT_KEY = "mechanicalProjectId"
-        private const val RECOVERY_PROJECT_KEY = "mechanicalRecoveryProject"
-        private const val RECOVERY_PAYLOAD_KEY = "mechanicalRecoveryPayload"
         private const val RECOVERY_REVISION_KEY = "mechanicalRecoveryRevision"
 
         private fun emptyEnvelope() = buildJsonObject {
@@ -292,3 +301,10 @@ class MechanicalViewModel @Inject constructor(
         }
     }
 }
+
+private fun recoveryPayload(savedState: SavedStateHandle, id: ProjectId): String? =
+    if (savedState.get<String>(RECOVERY_PROJECT_KEY) == id.value) {
+        savedState.get<String>(RECOVERY_PAYLOAD_KEY)
+    } else {
+        null
+    }

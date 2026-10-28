@@ -15,8 +15,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -32,14 +30,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import ir.mabhas19.core.model.Project
 import ir.mabhas19.core.model.ProjectId
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 private val MechanicalCatalogJson = Json { ignoreUnknownKeys = true }
 
@@ -53,9 +51,9 @@ fun MechanicalScreen(
     onSave: () -> Unit,
     onBack: () -> Unit
 ) {
-    val context = LocalContext.current
-    val catalog = remember {
-        context.resources.openRawResource(R.raw.mechanical_catalog).bufferedReader().use {
+    val resources = LocalResources.current
+    val catalog = remember(resources) {
+        resources.openRawResource(R.raw.mechanical_catalog).bufferedReader().use {
             MechanicalCatalogJson.decodeFromString<MechanicalCatalog>(it.readText())
         }
     }
@@ -125,9 +123,11 @@ fun MechanicalScreen(
                         fields = catalog.technicalFields.filter { it.topic == topic.id },
                         values = state.draft.technicalValues,
                         onChange = { id, value ->
-                            onChange(state.draft.copy(
-                                technicalValues = state.draft.technicalValues + (id to value)
-                            ))
+                            onChange(
+                                state.draft.copy(
+                                    technicalValues = state.draft.technicalValues + (id to value)
+                                )
+                            )
                         }
                     )
                 }
@@ -136,9 +136,11 @@ fun MechanicalScreen(
                         clause,
                         answers,
                         onAnswer = { id, answer ->
-                            onChange(state.draft.copy(
-                                answers = state.draft.answers + (id to answer)
-                            ))
+                            onChange(
+                                state.draft.copy(
+                                    answers = state.draft.answers + (id to answer)
+                                )
+                            )
                         }
                     )
                 }
@@ -173,7 +175,9 @@ private fun ProjectChooser(
     var title by rememberSaveable { mutableStateOf("") }
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLow)
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        )
     ) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Text("پروژه و زمینه مشترک", style = MaterialTheme.typography.titleMedium)
@@ -223,7 +227,9 @@ private fun ProjectContextCard(state: MechanicalState) {
     val context = state.context
     Card(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f))
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.55f)
+        )
     ) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Text("زمینه محاسبه", style = MaterialTheme.typography.titleSmall)
@@ -231,9 +237,11 @@ private fun ProjectContextCard(state: MechanicalState) {
                 listOfNotNull(
                     context?.cityId?.let { "شهر: $it" },
                     context?.occupancyId?.let { "کاربری: $it" },
-                    context?.conditionedAreaM2?.let { "مساحت: ${it} m²" },
+                    context?.conditionedAreaM2?.let { "مساحت: $it m²" },
                     context?.floorCount?.let { "تعداد طبقات: $it" }
-                ).ifEmpty { listOf("برای این پروژه هنوز شهر، کاربری و مشخصات ساختمانی ثبت نشده است.") }
+                ).ifEmpty {
+                    listOf("برای این پروژه هنوز شهر، کاربری و مشخصات ساختمانی ثبت نشده است.")
+                }
                     .joinToString(" · "),
                 style = MaterialTheme.typography.bodySmall
             )
@@ -247,7 +255,11 @@ private fun ProjectContextCard(state: MechanicalState) {
 }
 
 @Composable
-private fun TopicPicker(topics: List<MechanicalTopic>, selected: String, onSelect: (String) -> Unit) {
+private fun TopicPicker(
+    topics: List<MechanicalTopic>,
+    selected: String,
+    onSelect: (String) -> Unit
+) {
     Row(
         Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -260,80 +272,6 @@ private fun TopicPicker(topics: List<MechanicalTopic>, selected: String, onSelec
                 modifier = Modifier.testTag("mechanical_topic_${topic.order}")
             )
         }
-    }
-}
-
-@Composable
-private fun TechnicalPanel(
-    fields: List<MechanicalTechnicalField>,
-    values: Map<String, String>,
-    onChange: (String, String) -> Unit
-) {
-    var expanded by rememberSaveable(fields.firstOrNull()?.topic) { mutableStateOf(false) }
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.45f))
-    ) {
-        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Row(
-                Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(Modifier.weight(1f)) {
-                    Text("پارامترهای کلیدی تأسیسات مکانیکی", fontWeight = FontWeight.SemiBold)
-                    Text("فصل ۴ اجباری و فصل ۵ تجویزی", style = MaterialTheme.typography.bodySmall)
-                }
-                TextButton(onClick = { expanded = !expanded }) {
-                    Text(if (expanded) "بستن" else "ورود اطلاعات")
-                }
-            }
-            if (expanded) {
-                fields.forEach { field ->
-                    TechnicalField(field, values[field.id].orEmpty()) { onChange(field.id, it) }
-                }
-                if (fields.isEmpty()) Text("برای این بخش پارامتر فنی جداگانه‌ای در فرم منبع تعریف نشده است.")
-            }
-        }
-    }
-}
-
-@Composable
-private fun TechnicalField(
-    field: MechanicalTechnicalField,
-    value: String,
-    onChange: (String) -> Unit
-) {
-    if (field.type == "select" && field.options.isNotEmpty()) {
-        var expanded by rememberSaveable(field.id) { mutableStateOf(false) }
-        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            Text(field.label, style = MaterialTheme.typography.bodySmall)
-            androidx.compose.foundation.layout.Box {
-                OutlinedButton(onClick = { expanded = true }, modifier = Modifier.fillMaxWidth()) {
-                    val option = field.options.firstOrNull { it.value == value }
-                    Text(option?.label?.ifBlank { "انتخاب کنید" } ?: "انتخاب کنید")
-                }
-                DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-                    field.options.forEach { option ->
-                        DropdownMenuItem(
-                            text = { Text(option.label.ifBlank { "بررسی نشده" }) },
-                            onClick = {
-                                onChange(option.value)
-                                expanded = false
-                            }
-                        )
-                    }
-                }
-            }
-        }
-    } else {
-        OutlinedTextField(
-            value = value,
-            onValueChange = onChange,
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(field.label) },
-            singleLine = true
-        )
     }
 }
 
@@ -362,7 +300,11 @@ private fun ClauseCard(
                     color = MaterialTheme.colorScheme.primary
                 )
             }
-            Text(clause.title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+            Text(
+                clause.title,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
             if (clause.summary.isNotBlank()) {
                 Text(clause.summary, style = MaterialTheme.typography.bodySmall)
             }
@@ -409,7 +351,10 @@ private fun StatusPicker(status: String, onSelect: (String) -> Unit) {
         MechanicalAnswer.STATUS_NONCOMPLIANT to "نقص",
         MechanicalAnswer.STATUS_NOT_APPLICABLE to "نامرتبط"
     )
-    Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+    Row(
+        Modifier.horizontalScroll(rememberScrollState()),
+        horizontalArrangement = Arrangement.spacedBy(6.dp)
+    ) {
         choices.forEach { (value, label) ->
             FilterChip(
                 selected = status == value,
@@ -422,16 +367,18 @@ private fun StatusPicker(status: String, onSelect: (String) -> Unit) {
 
 @Composable
 private fun SaveStatus(state: MechanicalState, onSave: () -> Unit) {
+    val saveStatusText = when {
+        state.saving -> "در حال ذخیره در دستگاه…"
+        state.saved -> "پیش‌نویس این پروژه روی دستگاه ذخیره شد."
+        else -> listOf("تغییرات", "ذخیره‌نشده").joinToString(" ")
+    }
+    val saveStatusColor = if (state.error == null) {
+        MaterialTheme.colorScheme.onSurfaceVariant
+    } else {
+        MaterialTheme.colorScheme.error
+    }
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(
-            when {
-                state.saving -> "در حال ذخیره در دستگاه…"
-                state.saved -> "پیش‌نویس این پروژه روی دستگاه ذخیره شد."
-                else -> "تغییرات ذخیره‌نشده"
-            },
-            color = if (state.error == null) MaterialTheme.colorScheme.onSurfaceVariant
-            else MaterialTheme.colorScheme.error
-        )
+        Text(text = saveStatusText, color = saveStatusColor)
         if (!state.saved || state.error != null) {
             Button(onClick = onSave, enabled = !state.saving) { Text("ذخیره پیش‌نویس") }
         }
@@ -442,8 +389,12 @@ private fun SaveStatus(state: MechanicalState, onSave: () -> Unit) {
 @Composable
 private fun ErrorMessage(error: MechanicalError?) {
     val message = when (error) {
-        MechanicalError.CONFLICT -> "نسخه محلی تغییر کرده است؛ پیش‌نویس فقط‌خواندنی شد تا داده‌ای بازنویسی نشود."
-        MechanicalError.UNSUPPORTED_DRAFT -> "ساختار پیش‌نویس این پروژه پشتیبانی نمی‌شود؛ برای جلوگیری از بازنویسی، ویرایش غیرفعال است."
+        MechanicalError.CONFLICT ->
+            "نسخه محلی تغییر کرده است؛ " +
+                "پیش‌نویس فقط‌خواندنی شد تا داده‌ای بازنویسی نشود."
+        MechanicalError.UNSUPPORTED_DRAFT ->
+            "ساختار پیش‌نویس این پروژه پشتیبانی نمی‌شود؛ " +
+                "برای جلوگیری از بازنویسی، ویرایش غیرفعال است."
         MechanicalError.STORAGE -> "ذخیره‌سازی محلی انجام نشد. دوباره ذخیره کنید."
         MechanicalError.INVALID_TITLE -> "عنوان پروژه را وارد کنید."
         null -> return

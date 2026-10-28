@@ -18,6 +18,7 @@ import ir.mabhas19.core.model.SectionDraft
 import ir.mabhas19.core.model.ThemePreference
 import ir.mabhas19.core.testing.FakeProjectRepository
 import ir.mabhas19.feature.architecture.ArchitectureViewModel
+import ir.mabhas19.feature.mechanical.MechanicalViewModel
 import ir.mabhas19.feature.projects.ProjectsViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
@@ -32,9 +33,17 @@ class ProjectNavigationTest {
     private fun setContent(repository: FakeProjectRepository): ProjectsViewModel {
         val viewModel = ProjectsViewModel(repository, SavedStateHandle())
         val architecture = ArchitectureViewModel(repository, NavigationDrafts(), SavedStateHandle())
+        val mechanical = MechanicalViewModel(repository, NavigationDrafts(), SavedStateHandle())
         compose.setContent {
             MabhasTheme {
-                MabhasNavigation(viewModel, ThemePreference.SYSTEM, false, {}, architecture)
+                MabhasNavigation(
+                    viewModel = viewModel,
+                    theme = ThemePreference.SYSTEM,
+                    themeError = false,
+                    onThemeChange = {},
+                    architectureViewModel = architecture,
+                    mechanicalViewModel = mechanical
+                )
             }
         }
         return viewModel

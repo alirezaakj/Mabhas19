@@ -169,35 +169,52 @@ fun MabhasNavigation(
                         ProjectDetailScreen(project)
                     }
                     entry<Section> { key ->
-                        if (key.key == "architecture") {
-                            ArchitectureScreen(
-                                state = architectureState,
-                                evaluation = architectureEvaluation,
-                                projects = projects,
-                                onChange = architectureViewModel::update,
-                                onChooseProject = architectureViewModel::selectProject,
-                                onCreateProject = architectureViewModel::createProject,
-                                onSave = architectureViewModel::save,
-                                onEvaluate = architectureViewModel::evaluate,
-                                onBack = { backStack.removeLastOrNull() }
-                            )
-                        } else if (key.key == "mechanical") {
-                            MechanicalScreen(
-                                state = mechanicalState,
-                                projects = projects,
-                                onChooseProject = mechanicalViewModel::selectProject,
-                                onCreateProject = mechanicalViewModel::createProject,
-                                onChange = mechanicalViewModel::update,
-                                onSave = mechanicalViewModel::save,
-                                onBack = { backStack.removeLastOrNull() }
-                            )
-                        } else {
-                            SectionPlaceholderScreen(HomeSection.fromKey(key.key))
-                        }
+                        SectionDestination(
+                            sectionKey = key.key,
+                            architecture = {
+                                ArchitectureScreen(
+                                    state = architectureState,
+                                    evaluation = architectureEvaluation,
+                                    projects = projects,
+                                    onChange = architectureViewModel::update,
+                                    onChooseProject = architectureViewModel::selectProject,
+                                    onCreateProject = architectureViewModel::createProject,
+                                    onSave = architectureViewModel::save,
+                                    onEvaluate = architectureViewModel::evaluate,
+                                    onBack = { backStack.removeLastOrNull() }
+                                )
+                            },
+                            mechanical = {
+                                MechanicalScreen(
+                                    state = mechanicalState,
+                                    projects = projects,
+                                    onChooseProject = mechanicalViewModel::selectProject,
+                                    onCreateProject = mechanicalViewModel::createProject,
+                                    onChange = mechanicalViewModel::update,
+                                    onSave = mechanicalViewModel::save,
+                                    onBack = { backStack.removeLastOrNull() }
+                                )
+                            },
+                            other = { SectionPlaceholderScreen(HomeSection.fromKey(key.key)) }
+                        )
                     }
                 }
             )
         }
+    }
+}
+
+@Composable
+private fun SectionDestination(
+    sectionKey: String,
+    architecture: @Composable () -> Unit,
+    mechanical: @Composable () -> Unit,
+    other: @Composable () -> Unit
+) {
+    when (sectionKey) {
+        "architecture" -> architecture()
+        "mechanical" -> mechanical()
+        else -> other()
     }
 }
 
