@@ -11,12 +11,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import ir.mabhas19.core.designsystem.MabhasTheme
 import ir.mabhas19.core.model.ThemePreference
+import ir.mabhas19.feature.architecture.ArchitectureViewModel
 import ir.mabhas19.feature.projects.ProjectsViewModel
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val app: AppViewModel by viewModels()
     private val projects: ProjectsViewModel by viewModels()
+    private val architecture: ArchitectureViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,14 @@ class MainActivity : ComponentActivity() {
                 ThemePreference.DARK -> true
             }
             MabhasTheme(darkTheme = dark) {
-                MabhasNavigation(projects, theme, error, app::cycleTheme)
+                MabhasNavigation(
+                    projects,
+                    theme,
+                    error,
+                    app::cycleTheme,
+                    architecture,
+                    openArchitecture = intent.getBooleanExtra("open_architecture", false)
+                )
             }
         }
     }

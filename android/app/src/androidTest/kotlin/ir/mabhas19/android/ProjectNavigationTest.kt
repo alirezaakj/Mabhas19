@@ -11,9 +11,16 @@ import androidx.compose.ui.test.performTextInput
 import androidx.lifecycle.SavedStateHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import ir.mabhas19.core.designsystem.MabhasTheme
+import ir.mabhas19.core.domain.DraftConflictException
+import ir.mabhas19.core.domain.DraftRepository
+import ir.mabhas19.core.model.ProjectId
+import ir.mabhas19.core.model.SectionDraft
 import ir.mabhas19.core.model.ThemePreference
 import ir.mabhas19.core.testing.FakeProjectRepository
+import ir.mabhas19.feature.architecture.ArchitectureViewModel
 import ir.mabhas19.feature.projects.ProjectsViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.map
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -24,9 +31,10 @@ class ProjectNavigationTest {
 
     private fun setContent(repository: FakeProjectRepository): ProjectsViewModel {
         val viewModel = ProjectsViewModel(repository, SavedStateHandle())
+        val architecture = ArchitectureViewModel(repository, NavigationDrafts(), SavedStateHandle())
         compose.setContent {
             MabhasTheme {
-                MabhasNavigation(viewModel, ThemePreference.SYSTEM, false, {})
+                MabhasNavigation(viewModel, ThemePreference.SYSTEM, false, {}, architecture)
             }
         }
         return viewModel
@@ -51,14 +59,61 @@ class ProjectNavigationTest {
         compose.onNodeWithTag("project_test-1").assertIsDisplayed()
     }
 
-    @Test fun homeSectionOpensExplicitPlaceholder() {
+    @Test fun architectureOpensNativeProjectChooser() {
         setContent(FakeProjectRepository())
         compose.onNodeWithTag("home_screen")
             .performScrollToNode(hasTestTag("home_section_architecture"))
         compose.onNodeWithTag("home_section_architecture").performClick()
-        compose.onNodeWithTag("section_placeholder_architecture").assertIsDisplayed()
-        compose.onNodeWithTag("navigate_back").performClick()
+        compose.onNodeWithTag("architecture_screen").assertIsDisplayed()
+        compose.onNodeWithTag("architecture_screen")
+            .performScrollToNode(hasTestTag("architecture_create_sample"))
+        compose.onNodeWithTag("architecture_create_sample").assertIsDisplayed()
+        compose.onNodeWithTag("architecture_screen")
+            .performScrollToNode(hasTestTag("architecture_back"))
+        compose.onNodeWithTag("architecture_back").performClick()
         compose.waitForIdle()
         compose.onNodeWithTag("home_screen").assertIsDisplayed()
+    }
+
+    @Test fun architectureSampleBindsProjectAndOpensEditableWalls() {
+        val repository = FakeProjectRepository()
+        setContent(repository)
+        compose.onNodeWithTag("home_screen")
+            .performScrollToNode(hasTestTag("home_section_architecture"))
+        compose.onNodeWithTag("home_section_architecture").performClick()
+        compose.onNodeWithTag("architecture_screen")
+            .performScrollToNode(hasTestTag("architecture_create_sample"))
+        compose.onNodeWithTag("architecture_create_sample").performClick()
+        compose.waitUntil(15_000) { repository.projects.value.size == 1 }
+        compose.onNodeWithTag("architecture_screen")
+            .performScrollToNode(hasTestTag("architecture_area"))
+        compose.onNodeWithTag("architecture_area").assertIsDisplayed()
+        compose.onNodeWithTag("architecture_screen")
+            .performScrollToNode(hasTestTag("architecture_step_1"))
+        compose.onNodeWithTag("architecture_step_1").performClick()
+        compose.onNodeWithTag("architecture_screen")
+            .performScrollToNode(hasTestTag("envelope_walls_screen"))
+        compose.onNodeWithTag("envelope_walls_screen").assertIsDisplayed()
+    }
+}
+
+private class NavigationDrafts : DraftRepository {
+    private val data = MutableStateFlow<Map<Pair<ProjectId, String>, SectionDraft>>(emptyMap())
+    override fun observeDraft(projectId: ProjectId, section: String) = data.map {
+        it[
+            projectId to
+                section
+        ]
+    }
+    override suspend fun saveDraft(draft: SectionDraft): SectionDraft {
+        val key = draft.projectId to draft.section
+        if ((data.value[key]?.localRevision ?: 0) !=
+            draft.localRevision
+        ) {
+            throw DraftConflictException()
+        }
+        val saved = draft.copy(localRevision = draft.localRevision + 1)
+        data.value += key to saved
+        return saved
     }
 }

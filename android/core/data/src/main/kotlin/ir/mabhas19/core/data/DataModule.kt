@@ -14,6 +14,8 @@ import ir.mabhas19.core.domain.DraftRepository
 import ir.mabhas19.core.domain.IdGenerator
 import ir.mabhas19.core.domain.PreferencesRepository
 import ir.mabhas19.core.domain.ProjectRepository
+import ir.mabhas19.core.network.ArchitectureEvaluationApi
+import ir.mabhas19.core.network.ArchitectureEvaluationApiFactory
 import ir.mabhas19.core.network.PublicApi
 import ir.mabhas19.core.network.PublicApiFactory
 import java.util.UUID
@@ -40,6 +42,9 @@ object DataModule {
 
     @Provides @Singleton
     fun publicApi(): PublicApi = PublicApiFactory.create()
+
+    @Provides @Singleton
+    fun architectureApi(): ArchitectureEvaluationApi = ArchitectureEvaluationApiFactory.create()
 
     @Provides @Singleton
     fun settings(@ApplicationContext context: Context) = context.settings

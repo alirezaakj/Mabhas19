@@ -6,6 +6,13 @@ Status: public/guest discovery completed to the documented boundary on **2026-10
 
 ## Start here
 
+The native [architecture workspace](docs/android/architecture-workspace.md) adds
+the six-step «پوسته خارجی (معماری)» flow, project-scoped local drafts, a clearly
+labeled filled educational sample and public calculation adapters. It is a
+native reconstruction of the captured forms; complete website feature/pixel
+parity and engineering acceptance remain pending. Current build/device evidence
+is recorded in that workspace document separately from Phase 1 history.
+
 1. [Discovery summary and evidence](docs/discovery/README.md)
 2. [Feature catalogue and screen inventory](docs/discovery/features.md)
 3. [API inventory and contracts](docs/discovery/api.md)

@@ -5,3 +5,9 @@ Gradle root for the native app. Phase 1 provides a Persian RTL Compose shell who
 Local verification on 2026-10-27: `qualityCheck` (JVM tests, ktlint, detekt, Android Lint, debug APK) passed; the device/Room/Compose tests are written but not yet executed. Exact commands, results and host caveats are in [phase-1-status.md](../docs/android/phase-1-status.md). Build instructions are in [BUILDING.md](BUILDING.md).
 
 See [architecture and module structure](../docs/android/architecture.md), [implementation sequence](../docs/android/implementation-plan.md), and [test strategy](../docs/android/testing.md).
+
+The [native architecture workspace](../docs/android/architecture-workspace.md)
+now replaces the architecture placeholder with the captured fourth-edition forms,
+project-scoped drafts, an educational sample and public calculation adapters.
+Its new verification and remaining parity limitations are tracked separately
+from the Phase 1 record above.

@@ -1,0 +1,170 @@
+{
+  "captured_date": "2026-10-27",
+  "scope": "Public guest fourth edition; source inspection only, not interactive Chrome or backend parity verification",
+  "sources": [
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_airtightness.php",
+      "sha256": "da3c4ca03feacbf304205396d3cd7049502ad7118777d56d8b67992f21aef8b1",
+      "bytes": 374294,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_boundaries.php",
+      "sha256": "e76591174ce541aace81eea5655ebc11df9c4e7df9190de17603ec01647a3cad",
+      "bytes": 375310,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_daylight.php",
+      "sha256": "c8a4951d40f0778d4612d9daa5c067a7adfc81df0de5d6270a524b2e72bc32ca",
+      "bytes": 379953,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_dossier.php",
+      "sha256": "2874301a7c90c73b8b4f491174d8cb13d0b429b5fcd694d9e21844480c4e7382",
+      "bytes": 376009,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_general.php",
+      "sha256": "c9fe9fe3bd9ab52086543d4632b22c44950dfc336cd7b5ba99299085260b4eb6",
+      "bytes": 457476,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_glazing.php",
+      "sha256": "3de2c850154d65748f32f1fff59bfc2694e3cc9d000549c15779481d3cd13d96",
+      "bytes": 398932,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_occupancy.php",
+      "sha256": "1b294a37dd2db8d3950266bdb7da8fdcfd070bd6327087461b0d45cd12338228",
+      "bytes": 468444,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_roof_floor.php",
+      "sha256": "1b5b42a2ea608ae3665c3f3657e8b8e3b673f589bab116db42b16f7df6915c81",
+      "bytes": 1691168,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_shading.php",
+      "sha256": "f1105be3a0ac11192124fe2733088fe1170be67bd8af297097df0bbca8b49d88",
+      "bytes": 385228,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_thermal_bridges.php",
+      "sha256": "d69c2936f2971beeb08312897ede62210da5bd7d0d70e8ca4586ef4459bbf9bb",
+      "bytes": 378156,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/architecture/arch_walls.php",
+      "sha256": "7a99d91a584dd16ee6e929136fd5cc62361c10b639e8e2dde8c59770df906636",
+      "bytes": 1651892,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-airtightness.js",
+      "sha256": "8b022879047ea80f0e5a8677c41901982884667df3b12ad24d9d3932930e6cc3",
+      "bytes": 15741,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-boundaries.js",
+      "sha256": "977f30e428ea9494dafc87d751daf5a7473d7e24f2ca9ef7be5af93c8e4a03ed",
+      "bytes": 11516,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-daylight.js",
+      "sha256": "d74e95612e4d0c3fd3695aa841f2bca0feacce143acb6489f6f09e346fb84d35",
+      "bytes": 20981,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-general.js",
+      "sha256": "83169e7940085df2e0e81f4ed88ee6a64fac641191b7fe8451933517c79203f8",
+      "bytes": 40302,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": true
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-glazing.js",
+      "sha256": "2914d2c42f88bac3eb8467df5fb78a57c46ddc6dc25a8da6bddcda733f448d8a",
+      "bytes": 103126,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": true
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-shading.js",
+      "sha256": "7202bbb3220076652122dbcda25e7be30904c4db4046e320862d89bc3221af7f",
+      "bytes": 52784,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-shading69.js",
+      "sha256": "7624182e254184984e14d503a89c3a2fe0498db01f03e03be793b5708aa9c671",
+      "bytes": 6105,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-thermal-bridges.js",
+      "sha256": "3b287ac5411406fe354fe71c4caa458409dc41d95e895095ff2d5071763e16fb",
+      "bytes": 12035,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": false
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/arch-walls.js",
+      "sha256": "c4b996a97f5efce91b59688ccc3c239a32adabfb7f9fb0ea47a77d40b81e6758",
+      "bytes": 66442,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": true
+    },
+    {
+      "url": "https://www.mabhas19.ir/assets/roof-floor.js",
+      "sha256": "f7bb7df9ba316df6756a285b34eed8e1ffcbf1c7d7890f45d46c8421385df5bc",
+      "bytes": 57839,
+      "evidence_kind": "served-public-client-source",
+      "rea_selected": true
+    }
+  ],
+  "rea": {
+    "version": "6.8.0",
+    "parent_evidence_id": "ev_55bfd229eef55c4b3c1ca13d9862068e65fa488e18cb9ca9932546409e689ebb",
+    "source_selection": [
+      "assets__arch-general.js",
+      "assets__arch-glazing.js",
+      "assets__arch-walls.js",
+      "assets__roof-floor.js"
+    ],
+    "executed_target_javascript": false
+  },
+  "limitations": [
+    "Chrome launch/debugging commands were rejected by automatic approval review without a reason.",
+    "Browser-panel requests failed ERR_CONNECTION_CLOSED.",
+    "No live calculation transaction is established by this static capture.",
+    "Raw source, complete Evidence and session-bearing captures remain ignored under research/local."
+  ]
+}

@@ -87,7 +87,10 @@ class AppConventionPlugin : Plugin<Project> {
                 targetCompatibility = JavaVersion.VERSION_17
             }
             buildTypes {
-                getByName("debug") { applicationIdSuffix = ".debug" }
+                getByName("debug") {
+                    applicationIdSuffix = providers.gradleProperty("debugApplicationIdSuffix")
+                        .orElse(".debug").get()
+                }
                 getByName("release") {
                     isMinifyEnabled = true
                     proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

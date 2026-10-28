@@ -1,5 +1,11 @@
 # Implementation roadmap
 
+Current implementation note: the user prioritized the native architecture forms
+after Phase 1. The [architecture workspace](architecture-workspace.md) implements
+the captured six-step draft UI and public evaluation request mapping. This is
+partial work across Phases 2–4; it does not mark their engineering, synchronization,
+library, dossier or acceptance criteria complete.
+
 Planning baseline: 2026-10-27. Target: native Kotlin app covering the fourth-edition website workflows, as confirmed by the user. Authenticated/team inspection is deferred at the user's direction; its future implementation remains planned with explicit prerequisites. Checklist items below are planned work unless explicitly checked. Full feature mapping is in [features](../discovery/features.md); contracts in [API inventory](../discovery/api.md).
 
 ## Phase 0 — Finish contracts and agree scope

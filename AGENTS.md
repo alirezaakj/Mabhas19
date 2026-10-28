@@ -2,7 +2,7 @@
 
 ## Purpose and current stage
 
-Build a native Kotlin Android client for https://mabhas19.ir/. This repository currently contains discovery evidence and an implementation plan, not a runnable Android application. Read README.md, docs/discovery/README.md, docs/android/implementation-plan.md and docs/open-questions.md before implementation. Do not claim Gradle, Android tests or CI passed before they exist and run.
+Build a native Kotlin Android client for https://mabhas19.ir/. This repository contains discovery evidence, a runnable Phase 1 Android scaffold, and a native architecture workspace. Read README.md, docs/discovery/README.md, docs/android/implementation-plan.md and docs/open-questions.md before implementation. Report verification from the current checkout; prior build or CI evidence does not validate new work.
 
 ## Evidence and scope
 

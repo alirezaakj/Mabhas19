@@ -12,7 +12,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -24,6 +27,8 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import ir.mabhas19.core.model.ProjectId
 import ir.mabhas19.core.model.ThemePreference
+import ir.mabhas19.feature.architecture.ArchitectureScreen
+import ir.mabhas19.feature.architecture.ArchitectureViewModel
 import ir.mabhas19.feature.home.HomeScreen
 import ir.mabhas19.feature.home.HomeSection
 import ir.mabhas19.feature.home.SectionPlaceholderScreen
@@ -49,13 +54,23 @@ fun MabhasNavigation(
     viewModel: ProjectsViewModel,
     theme: ThemePreference,
     themeError: Boolean,
-    onThemeChange: () -> Unit
+    onThemeChange: () -> Unit,
+    architectureViewModel: ArchitectureViewModel,
+    openArchitecture: Boolean = false
 ) {
     val backStack = rememberNavBackStack(Home)
+    ArchitectureIntent(openArchitecture) {
+        if ((backStack.lastOrNull() as? Section)?.key != "architecture") {
+            backStack.add(Section("architecture"))
+        }
+    }
     val projects by viewModel.projects.collectAsStateWithLifecycle()
     val editor by viewModel.editor.collectAsStateWithLifecycle()
     val title by viewModel.title.collectAsStateWithLifecycle()
     val loadFailed by viewModel.loadFailed.collectAsStateWithLifecycle()
+    val architectureState by architectureViewModel.state.collectAsStateWithLifecycle()
+    val architectureEvaluation by architectureViewModel.evaluation.collectAsStateWithLifecycle()
+    val isArchitecture = (backStack.lastOrNull() as? Section)?.key == "architecture"
     val themeLabel = when (theme) {
         ThemePreference.SYSTEM -> R.string.theme_system
         ThemePreference.LIGHT -> R.string.theme_light
@@ -70,39 +85,41 @@ fun MabhasNavigation(
     }
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    if (backStack.lastOrNull() == Home) {
-                        Column {
-                            Text(
-                                stringResource(R.string.app_name),
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                            Text(
-                                stringResource(R.string.app_subtitle),
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.primary,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
+            if (!isArchitecture) {
+                TopAppBar(
+                    title = {
+                        if (backStack.lastOrNull() == Home) {
+                            Column {
+                                Text(
+                                    stringResource(R.string.app_name),
+                                    style = MaterialTheme.typography.titleMedium
+                                )
+                                Text(
+                                    stringResource(R.string.app_subtitle),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.primary,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+                        } else {
+                            Text(stringResource(R.string.app_name))
                         }
-                    } else {
-                        Text(stringResource(R.string.app_name))
-                    }
-                },
-                navigationIcon = {
-                    if (backStack.size > 1) {
-                        TextButton(onClick = {
-                            backStack.removeLastOrNull()
-                        }, modifier = Modifier.testTag("navigate_back")) {
-                            Text(stringResource(R.string.back))
+                    },
+                    navigationIcon = {
+                        if (backStack.size > 1) {
+                            TextButton(onClick = {
+                                backStack.removeLastOrNull()
+                            }, modifier = Modifier.testTag("navigate_back")) {
+                                Text(stringResource(R.string.back))
+                            }
                         }
+                    },
+                    actions = {
+                        TextButton(onClick = onThemeChange) { Text(stringResource(themeLabel)) }
                     }
-                },
-                actions = {
-                    TextButton(onClick = onThemeChange) { Text(stringResource(themeLabel)) }
-                }
-            )
+                )
+            }
         }
     ) { padding ->
         Column(Modifier.fillMaxSize().padding(padding)) {
@@ -141,10 +158,35 @@ fun MabhasNavigation(
                         ProjectDetailScreen(project)
                     }
                     entry<Section> { key ->
-                        SectionPlaceholderScreen(HomeSection.fromKey(key.key))
+                        if (key.key == "architecture") {
+                            ArchitectureScreen(
+                                state = architectureState,
+                                evaluation = architectureEvaluation,
+                                projects = projects,
+                                onChange = architectureViewModel::update,
+                                onChooseProject = architectureViewModel::selectProject,
+                                onCreateProject = architectureViewModel::createProject,
+                                onSave = architectureViewModel::save,
+                                onEvaluate = architectureViewModel::evaluate,
+                                onBack = { backStack.removeLastOrNull() }
+                            )
+                        } else {
+                            SectionPlaceholderScreen(HomeSection.fromKey(key.key))
+                        }
                     }
                 }
             )
+        }
+    }
+}
+
+@Composable
+private fun ArchitectureIntent(openArchitecture: Boolean, onOpen: () -> Unit) {
+    var handled by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(openArchitecture) {
+        if (openArchitecture && !handled) {
+            onOpen()
+            handled = true
         }
     }
 }
