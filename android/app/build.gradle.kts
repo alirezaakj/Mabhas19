@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":feature:projects"))
     implementation(project(":feature:home"))
     implementation(project(":feature:architecture"))
+    implementation(project(":feature:mechanical"))
     implementation(libs.activity.compose)
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.compose)

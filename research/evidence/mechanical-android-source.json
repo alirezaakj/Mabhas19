@@ -1,0 +1,27 @@
+{
+  "captured_date": "2026-10-28",
+  "scope": "Public guest mechanical checklist, fourth edition 1399-v4; static source review for Android F15 projection",
+  "page": {
+    "url": "https://mabhas19.ir/architecture/arch_checklists.php?domain=mechanical",
+    "status": 200,
+    "sha256": "f79e69262c66f09878f652abd0f48b9813944fba636df906e842929373b16c22"
+  },
+  "scripts": [
+    {
+      "url": "https://mabhas19.ir/assets/arch-checklists.js?v=91",
+      "sha256": "63cde04cc81678c7cc27afb5c7cbf3fa22e9e2e76d1d2d2ddbd29b9808eb3b0b"
+    },
+    {
+      "url": "https://mabhas19.ir/assets/mep-checklist65.js?v=91",
+      "sha256": "a1a87baf739cf784d832d2bee6808cb4f8b8069c9710f6492363ba7bbc24e1a7"
+    }
+  ],
+  "observed": {
+    "mechanical_topic_groups": 6,
+    "static_mechanical_clause_cards": 24,
+    "injected_evaporative_cooler_card": 1,
+    "atomic_prompts_in_android_catalog": 59,
+    "mechanical_technical_fields_in_android_catalog": 41
+  },
+  "method": "Public response and scripts were read as text and parsed statically. Target JavaScript was not executed; Chrome remote debugging was unavailable in the Codex session. Raw captures are retained only in ignored research/local/mechanical/."
+}

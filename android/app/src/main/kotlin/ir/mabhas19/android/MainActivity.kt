@@ -12,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import ir.mabhas19.core.designsystem.MabhasTheme
 import ir.mabhas19.core.model.ThemePreference
 import ir.mabhas19.feature.architecture.ArchitectureViewModel
+import ir.mabhas19.feature.mechanical.MechanicalViewModel
 import ir.mabhas19.feature.projects.ProjectsViewModel
 
 @AndroidEntryPoint
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
     private val app: AppViewModel by viewModels()
     private val projects: ProjectsViewModel by viewModels()
     private val architecture: ArchitectureViewModel by viewModels()
+    private val mechanical: MechanicalViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +40,9 @@ class MainActivity : ComponentActivity() {
                     error,
                     app::cycleTheme,
                     architecture,
-                    openArchitecture = intent.getBooleanExtra("open_architecture", false)
+                    openArchitecture = intent.getBooleanExtra("open_architecture", false),
+                    mechanicalViewModel = mechanical,
+                    openMechanical = intent.getBooleanExtra("open_mechanical", false)
                 )
             }
         }

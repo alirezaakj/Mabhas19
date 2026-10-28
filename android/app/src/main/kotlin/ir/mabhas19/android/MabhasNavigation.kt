@@ -32,6 +32,8 @@ import ir.mabhas19.feature.architecture.ArchitectureViewModel
 import ir.mabhas19.feature.home.HomeScreen
 import ir.mabhas19.feature.home.HomeSection
 import ir.mabhas19.feature.home.SectionPlaceholderScreen
+import ir.mabhas19.feature.mechanical.MechanicalScreen
+import ir.mabhas19.feature.mechanical.MechanicalViewModel
 import ir.mabhas19.feature.projects.NewProjectScreen
 import ir.mabhas19.feature.projects.ProjectDetailScreen
 import ir.mabhas19.feature.projects.ProjectsScreen
@@ -56,12 +58,19 @@ fun MabhasNavigation(
     themeError: Boolean,
     onThemeChange: () -> Unit,
     architectureViewModel: ArchitectureViewModel,
-    openArchitecture: Boolean = false
+    openArchitecture: Boolean = false,
+    mechanicalViewModel: MechanicalViewModel,
+    openMechanical: Boolean = false
 ) {
     val backStack = rememberNavBackStack(Home)
     ArchitectureIntent(openArchitecture) {
         if ((backStack.lastOrNull() as? Section)?.key != "architecture") {
             backStack.add(Section("architecture"))
+        }
+    }
+    MechanicalIntent(openMechanical) {
+        if ((backStack.lastOrNull() as? Section)?.key != "mechanical") {
+            backStack.add(Section("mechanical"))
         }
     }
     val projects by viewModel.projects.collectAsStateWithLifecycle()
@@ -70,7 +79,9 @@ fun MabhasNavigation(
     val loadFailed by viewModel.loadFailed.collectAsStateWithLifecycle()
     val architectureState by architectureViewModel.state.collectAsStateWithLifecycle()
     val architectureEvaluation by architectureViewModel.evaluation.collectAsStateWithLifecycle()
-    val isArchitecture = (backStack.lastOrNull() as? Section)?.key == "architecture"
+    val mechanicalState by mechanicalViewModel.state.collectAsStateWithLifecycle()
+    val fullScreenSection = (backStack.lastOrNull() as? Section)?.key in
+        setOf("architecture", "mechanical")
     val themeLabel = when (theme) {
         ThemePreference.SYSTEM -> R.string.theme_system
         ThemePreference.LIGHT -> R.string.theme_light
@@ -85,7 +96,7 @@ fun MabhasNavigation(
     }
     Scaffold(
         topBar = {
-            if (!isArchitecture) {
+            if (!fullScreenSection) {
                 TopAppBar(
                     title = {
                         if (backStack.lastOrNull() == Home) {
@@ -170,12 +181,33 @@ fun MabhasNavigation(
                                 onEvaluate = architectureViewModel::evaluate,
                                 onBack = { backStack.removeLastOrNull() }
                             )
+                        } else if (key.key == "mechanical") {
+                            MechanicalScreen(
+                                state = mechanicalState,
+                                projects = projects,
+                                onChooseProject = mechanicalViewModel::selectProject,
+                                onCreateProject = mechanicalViewModel::createProject,
+                                onChange = mechanicalViewModel::update,
+                                onSave = mechanicalViewModel::save,
+                                onBack = { backStack.removeLastOrNull() }
+                            )
                         } else {
                             SectionPlaceholderScreen(HomeSection.fromKey(key.key))
                         }
                     }
                 }
             )
+        }
+    }
+}
+
+@Composable
+private fun MechanicalIntent(openMechanical: Boolean, onOpen: () -> Unit) {
+    var handled by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(openMechanical) {
+        if (openMechanical && !handled) {
+            onOpen()
+            handled = true
         }
     }
 }
